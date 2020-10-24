@@ -7,3 +7,12 @@ import './scss/base.scss';
 
 import './js/scrypt.js';
 import './js/snake/snake.js';
+
+// setup materialize components
+document.addEventListener('DOMContentLoaded', function () {
+  const modals = document.querySelectorAll('.modal');
+  M.Modal.init(modals);
+
+  const items = document.querySelectorAll('.collapsible');
+  M.Collapsible.init(items);
+});
