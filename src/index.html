@@ -68,6 +68,50 @@
           </div>
         </nav>
       </div>
+
+      <div class="snake-wrp">
+        <h1 class="snake-title">The Snake</h1>
+        <div class="mode-wrp">
+          <div class="options">
+            <div class="options__item">
+              <input
+                id="black-color"
+                type="radio"
+                name="color"
+                class="options__input"
+                data-mode="classic"
+              />
+              <label class="options__label" for="black-color"
+                ><span>Classic</span></label
+              >
+            </div>
+
+            <div class="options__item">
+              <input
+                id="white-color"
+                type="radio"
+                name="color"
+                class="options__input"
+                data-mode="ignoreWallsCollisionMode"
+              />
+              <label class="options__label" for="white-color"
+                ><span>Arcade</span></label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="canvas-wrp">
+          <canvas class="canvas" id="canvas" width="528" height="528"></canvas>
+        </div>
+        <button class="btn button-game snake-start" type="button">
+          <span class="button-game-bg-left"></span>
+          <span class="button-game-bg-mid">
+            <span>Start Game</span>
+          </span>
+          <span class="button-game-bg-right"></span>
+        </button>
+      </div>
+
       <div class="body">
         <div class="body-top">
           <div class="body-bot">
@@ -89,30 +133,6 @@
           </div>
         </div>
         <div class="body-trail"></div>
-      </div>
-
-      <div class="snake-wrp">
-        <h1 class="snake-title">The Snake</h1>
-        <div class="canvas-wrp">
-          <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
-        </div>
-
-        <button class="btn button-game snake-start" type="button">
-          <span class="button-game-bg-left"></span>
-          <span class="button-game-bg-mid">
-            <span>Start Game</span>
-          </span>
-          <span class="button-game-bg-right"></span>
-        </button>
-
-        <!-- <button class="snake-start">start game</button> -->
-
-        <div class="mode-wrp">
-          <button class="mode__btn" data-mode="classic">Classic mode</button>
-          <button class="mode__btn" data-mode="ignoreWallsCollisionMode">
-            ignore walls mode
-          </button>
-        </div>
       </div>
 
       <footer class="footer"></footer>

@@ -5,7 +5,8 @@ import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import { startButton, canvas, modeWrp } from './snakeRefs';
 import '../../css/snake.css';
-
+const modeInputs = modeWrp.querySelectorAll('input');
+console.log();
 export const ctx = canvas.getContext('2d');
 
 let playing = true;
@@ -17,9 +18,10 @@ const drawScore = () => {
   ctx.fillStyle = 'Gold';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
-  // ctx.globalCompositeOperation = "destination-over"; что-то на подобии з-индекса надо тестировать
+  // ctx.globalCompositeOperation = 'destination-over'; //что-то на подобии з-индекса надо тестировать
   ctx.fillText('Score: ' + score, blockSize, blockSize);
 };
+
 // ========border========
 const drawBorder = () => {
   ctx.fillStyle = 'Gray';
@@ -35,6 +37,9 @@ export const gameOver = () => {
   if (!playing) {
     startButton.removeAttribute('disabled', 'disabled');
     // document.removeEventListener('keydown', directionsMaker);
+    modeInputs.forEach(e => {
+      e.removeAttribute('disabled', 'disabled');
+    });
   }
 
   ctx.font = '60px Courier';
@@ -74,6 +79,9 @@ const gameLoop = function () {
   if (playing) {
     setTimeout(gameLoop, animationTime);
     startButton.setAttribute('disabled', 'disabled');
+    modeInputs.forEach(e => {
+      e.setAttribute('disabled', 'disabled');
+    });
   }
 };
 drawBorder();
@@ -94,7 +102,10 @@ const startBtnHandler = () => {
 
 const setNewMode = e => {
   const mode = e.target.dataset.mode;
-  localStorage.setItem('mode', mode);
+  if (mode) {
+    console.log(mode);
+    localStorage.setItem('mode', mode);
+  }
 };
 
 //listeners
