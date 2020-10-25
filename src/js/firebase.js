@@ -32,8 +32,8 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.email.style.display = 'inline-block';
     Refs.password.style.display = 'inline-block';
   }
-
 });
+
 
 
 Refs.login.addEventListener('click', authorization);
