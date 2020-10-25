@@ -337,6 +337,18 @@ input[type='radio'].visually-hidden {
   z-index: 175;
 }
 
+.stat-wrap {
+  color: #fff;
+}
+
+.stat__title {
+  margin-bottom: 10px;
+}
+
+.player {
+  margin-bottom: 5px;
+}
+
 .footer {
   padding: 50px 0;
 }
