@@ -13,7 +13,6 @@ let snake = null;
 let score = 0;
 
 const drawScore = () => {
-  console.log(score);
   ctx.font = '20px Courier';
   ctx.fillStyle = 'Gold';
   ctx.textAlign = 'left';
@@ -60,8 +59,9 @@ const createNewSnake = () => {
 
 //start actions
 const gameLoop = function () {
-  // console.log(snake);
+  let animationTime;
   if (snake !== null) {
+    animationTime = snake.getAnimationTime;
     score = snake.getScore;
     ctx.clearRect(0, 0, width, height);
     drawScore();
@@ -72,7 +72,7 @@ const gameLoop = function () {
   }
 
   if (playing) {
-    setTimeout(gameLoop, 100);
+    setTimeout(gameLoop, animationTime);
     startButton.setAttribute('disabled', 'disabled');
   }
 };

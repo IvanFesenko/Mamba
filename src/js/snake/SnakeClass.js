@@ -24,6 +24,14 @@ class Snake {
     return (this.score = score);
   }
 
+  get getAnimationTime() {
+    return this.animationTime;
+  }
+
+  set setAnimationTime(time) {
+    this.animationTime = time;
+  }
+
   draw() {
     // this.segments.forEach((element) => element.drawSquare("blue"));
 
