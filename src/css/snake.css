@@ -27,8 +27,73 @@ body {
   font-size: 25px;
   text-align: center;
   text-transform: uppercase;
+  transition: all 0.25s linear;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.snake-start:hover {
+  transform: scale(1.1);
 }
 
 .snake-start:disabled {
   cursor: not-allowed;
+  filter: grayscale(80%);
+  transform: scale(1);
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 0 0;
+}
+
+.options__item {
+  margin: 0 0 10px 0;
+  width: 100px;
+}
+
+.options__input:disabled {
+  cursor: not-allowed;
+  filter: grayscale(80%);
+}
+
+.options__input {
+  display: none;
+}
+
+.options__input:checked + .options__label::after {
+  transform: scale(1);
+}
+
+.options__label {
+  display: inline-flex;
+  font-size: 18px;
+  line-height: 140%;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  color: gold;
+}
+
+.options__label::before {
+  content: '';
+  align-self: flex-start;
+  flex: 0 0 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 10px 0 0;
+}
+
+.options__label::after {
+  transition: transform 0.3s ease 0s;
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: gold;
+  transform: scale(0);
 }
