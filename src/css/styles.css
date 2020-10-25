@@ -338,15 +338,16 @@ input[type='radio'].visually-hidden {
 }
 
 .stat-wrap {
-  color: #fff;
 }
 
 .stat__title {
   margin-bottom: 10px;
+  color: #f3e6d0;
 }
 
 .player {
   margin-bottom: 5px;
+  color: #a99877;
 }
 
 .footer {
