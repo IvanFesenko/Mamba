@@ -56,10 +56,10 @@ const drawBorder = function () {
 //==========game over==========
 const gameOver = function () {
   playing = false;
-
+  score = 0;
   if (!playing) {
     startButton.removeAttribute('disabled', 'disabled');
-    document.removeEventListener('keydown', directionsMaker);
+    // document.removeEventListener('keydown', directionsMaker);
   }
 
   ctx.font = '60px Courier';
@@ -106,7 +106,7 @@ class Block {
 
 //=========SNAKE========
 class Snake {
-  constructor(mode = 'classic') {
+  constructor(mode) {
     this.segments = [new Block(7, 5), new Block(6, 5), new Block(5, 5)];
     this.direction = 'right';
     this.nextDirection = 'right';
@@ -258,18 +258,25 @@ class Apple {
 //game mode
 
 if (localStorage.getItem('mode') === null) {
-  localStorage.setItem('mode', 'classic');
+  localStorage.setItem('mode', MODE_CLASSIC);
 }
 
 //__________create snake and apple__________
 const apple = new Apple();
-const snake = new Snake(localStorage.getItem('mode'));
+// const snake = new Snake(localStorage.getItem('mode'));
+let snake = null;
+
+const createNewSnake = () => {
+  snake = new Snake(localStorage.getItem('mode'));
+  playing = true;
+};
 // const snake = new Snake('ignoreWallsCollisionMode');
 
 //================
 //start actions
 const gameLoop = function () {
-  if (!!snake) {
+  // console.log(snake);
+  if (snake !== null) {
     ctx.clearRect(0, 0, width, height);
     drawScore();
     snake.move();
@@ -284,19 +291,19 @@ const gameLoop = function () {
   }
 };
 drawBorder();
-gameLoop();
 
 //handlers
 const directionsMaker = e => {
   const newDirection = directions[e.code];
   if (newDirection !== undefined) {
+    console.log(snake);
     snake.setDirection(newDirection);
   }
 };
 
 const startBtnHandler = () => {
-  window.location.reload();
-  // gameLoop();
+  createNewSnake();
+  gameLoop();
 };
 
 const setNewMode = e => {
