@@ -12,92 +12,59 @@
   </head>
 
   <body class="homepage">
-    <div class="wrapper">
-      <div class="header">
-        <div class="header-top">
-          <div class="logo">
-            <span class="material-icons icon">fingerprint</span>
-            <div class="logo-text">
-              <span>FSDev</span>
-              <span>Entertainment</span>
-            </div>
+    <div class="header">
+      <div class="wrapper">
+        <div class="header-top"></div>
+      </div>
+      <div class="header-bottom">
+        <div class="wrapper">
+          <div class="logo-header">
+            <span class="logo-img">
+              <img src="./images/gray_bottom.png" alt="" />
+            </span>
+            <span class="logo-img-in">
+              <img src="./images/normal_sm.png" alt="" />
+            </span>
+            <div class="logo-text-header">Mamba</div>
+            <p class="logo-text-descr">Добейся величия!</p>
           </div>
 
-          <div class="sing-in-wrap">
-            <button class="btn button-game" type="button">
-              <span class="button-game-bg-left"></span>
-              <span class="button-game-bg-mid">
-                <span>Sing in</span>
-              </span>
-              <span class="button-game-bg-right"></span>
-            </button>
-            <button class="btn button-game" type="button">
-              <span class="button-game-bg-left"></span>
-              <span class="button-game-bg-mid">
-                <span>Sing up</span>
-              </span>
-              <span class="button-game-bg-right"></span>
-            </button>
-          </div>
-        </div>
-        <div class="header-bottom">
-          <div class="div"></div>
-          <!-- <form action="#" class="form__registration">
-            <input
-              type="text"
-              id="inputUserName"
-              class="form__registration--control"
-              placeholder="User name *"
-              required=""
-              autofocus=""
-            />
-            <input
-              type="email"
-              id="inputEmail"
-              class="form__registration--control"
-              placeholder="Email address *"
-              required=""
-            />
-            <input
-              type="password"
-              id="inputPassword"
-              class="form__registration--control"
-              placeholder="Password *"
-              required=""
-            />
-
-            <button
-              class="btn btn-success btn-block"
-              id="loginbtn"
-              type="button"
-            >
-              Sign in
-            </button>
-            <button
-              class="btn btn-success btn-block"
-              id="logoutbtn"
-              type="button"
-            >
-              Logout
-            </button>
-            <button
-              class="btn btn-success btn-block"
-              id="singupbtn"
-              type="button"
-            >
-              Sign up
-            </button>
-          </form> -->
+          <!-- <ul class="menu">
+            <li class="menu__item">
+              <a href="#" class="menu__link">About</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Developerse</a>
+            </li>
+          </ul> -->
           <nav class="navigation">
-            <div class="user-name">You are not registered yet</div>
+            <div class="sing-in-wrap">
+              <button class="btn button-game" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Sing in</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
+              <button class="btn button-game" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Sing up</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
+            </div>
+            <!-- <div class="user-name"></div>
             <div class="avatar-frame">
               <span class="no-avatar"></span>
               <span class="border"></span>
-            </div>
+            </div> -->
           </nav>
         </div>
       </div>
+    </div>
 
+    <div class="wrapper">
       <div class="body">
         <div class="body-top">
           <div class="body-bot">
@@ -181,7 +148,57 @@
         </button>
       </div>
 
-      <footer class="footer"></footer>
+      <footer class="footer">
+        <div class="logo logo-footer">
+          <span class="material-icons icon">fingerprint</span>
+          <div class="logo-text">
+            <span>FSDev</span>
+            <span>Entertainment</span>
+          </div>
+        </div>
+        <form action="#" class="form__registration">
+          <input
+            type="text"
+            id="inputUserName"
+            class="form__registration--control"
+            placeholder="User name *"
+            required=""
+            autofocus=""
+          />
+          <input
+            type="email"
+            id="inputEmail"
+            class="form__registration--control"
+            placeholder="Email address *"
+            required=""
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            class="form__registration--control"
+            placeholder="Password *"
+            required=""
+          />
+
+          <button class="btn btn-success btn-block" id="loginbtn" type="button">
+            Sign in
+          </button>
+          <button
+            class="btn btn-success btn-block"
+            id="logoutbtn"
+            type="button"
+          >
+            Logout
+          </button>
+          <button
+            class="btn btn-success btn-block"
+            id="singupbtn"
+            type="button"
+          >
+            Sign up
+          </button>
+        </form>
+      </footer>
     </div>
 
     <!-- SIGN UP MODAL -->
