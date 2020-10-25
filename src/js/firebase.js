@@ -6,7 +6,7 @@ import 'firebase/database';
 
 
 
-const app = firebase.initializeApp({
+firebase.initializeApp({
     apiKey: "AIzaSyBMhO0NQUdNhSwM2MzfffK0CnXNvO-SQ5Q",
     authDomain: "snake-e2214.firebaseapp.com",
     databaseURL: "https://snake-e2214.firebaseio.com",
@@ -16,21 +16,23 @@ const app = firebase.initializeApp({
     appId: "1:1059522027824:web:73740d4b7a4ff4094228f5"
   });
 
+
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
     console.log(fbUser);
     Refs.logout.style.display = 'inline';
     Refs.login.style.display = 'none';
+    Refs.userName.style.display = 'none';    
     Refs.singup.style.display = 'none';
     Refs.email.style.display = 'none';
     Refs.password.style.display = 'none';
   } else {
-    console.log("User not logged in");
     Refs.logout.style.display = 'none';
     Refs.login.style.display = 'inline';
     Refs.singup.style.display = 'inline';
     Refs.email.style.display = 'inline-block';
     Refs.password.style.display = 'inline-block';
+    Refs.userName.style.display = 'inline-block';  
   }
 
 });
@@ -52,18 +54,52 @@ function logOut(e) {
   firebase.auth().signOut();
 }
 
-function singUp(e) { 
+async function singUp(e) { 
   e.preventDefault();
-  const auth = firebase.auth();
-  const promise = auth.createUserWithEmailAndPassword(Refs.email.value, Refs.password.value);
-  promise.then(user => addUserToDB(user)).catch(e => console.error(e.message));
+  try {
+    const userName = Refs.userName.value;
+    const nameAvailable = await userNameAvailable(userName);
+    if (nameAvailable) {
+      const auth = firebase.auth();
+      const user = await auth.createUserWithEmailAndPassword(Refs.email.value, Refs.password.value);
+      await addUserToDB(user, userName);
+    } else {
+      alert('Username already exists');
+    }
+
+  } catch {
+    alert('User with this e-mail already exists');
+  }  
 }
 
-function addUserToDB({ user }) {
-  const { uid, email } = user;
-  const db = firebase.database();
-  const users = db.ref('users');
-  const stats = db.ref('stats');
-  users.child(uid).set({ 'email': email }).then(console.log('user added to DB')).catch(e => console.error(e.message));
-  stats.child(uid).set({ 'total': 0, 'maxScore': 0 }).catch(e => console.error(e.message));
+async function addUserToDB({ user }, userName) {
+  try { 
+    const { uid, email } = user;
+    const db = firebase.database();
+    const users = db.ref('users');
+    const stats = db.ref('stats');
+    const userNames = db.ref('userNames');
+    userNames.push(userName);  
+    users.child(uid).set({ 'email': email, 'userName': userName});
+    stats.child(uid).set({ 'total': 0, 'maxScore': 0 });
+  } catch {
+    console.error('user add failed');
+  }
+}
+
+function getCurrentUserID() {
+  return firebase.auth().currentUser.uid;
+}
+
+async function userNameAvailable(userName) {
+  try {
+    const db = firebase.database();
+    const users = db.ref('userNames');
+    const dataSnapshot = await users.once('value');
+    const data = dataSnapshot.val();
+    const usedNames = Object.values(data);
+    return !usedNames.includes(userName)
+  } catch {
+    console.error('Cannot read data from DB!');
+  }
 }
