@@ -5,68 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mamba - discover the predator in you</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="homepage">
     <div class="wrapper">
-      <div class="head">
-        <form action="#" class="form__registration">
-          <input
-            type="text"
-            id="inputUserName"
-            class="form__registration--control"
-            placeholder="User name *"
-            required=""
-            autofocus=""
-          />
-          <input
-            type="email"
-            id="inputEmail"
-            class="form__registration--control"
-            placeholder="Email address *"
-            required=""
-          />
-          <input
-            type="password"
-            id="inputPassword"
-            class="form__registration--control"
-            placeholder="Password *"
-            required=""
-          />
+      <div class="header">
+        <div class="header-top">
+          <div class="logo">
+            <span class="material-icons icon">fingerprint</span>
+            <div class="logo-text">
+              <span>FSDev</span>
+              <span>Entertainment</span>
+            </div>
+          </div>
 
-          <button class="btn btn-success btn-block" id="loginbtn" type="button">
-            Sign in
-          </button>
-          <button
-            class="btn btn-success btn-block"
-            id="logoutbtn"
-            type="button"
-          >
-            Logout
-          </button>
-          <button
-            class="btn btn-success btn-block"
-            id="singupbtn"
-            type="button"
-          >
-            Sign up
-          </button>
-        </form>
-        <nav class="navigation">
           <div class="sing-in-wrap">
-            <a class="btn button-game" type="button">
+            <button class="btn button-game" type="button">
               <span class="button-game-bg-left"></span>
               <span class="button-game-bg-mid">
-                <span>Sing-in</span>
+                <span>Sing in</span>
               </span>
               <span class="button-game-bg-right"></span>
-            </a>
+            </button>
+            <button class="btn button-game" type="button">
+              <span class="button-game-bg-left"></span>
+              <span class="button-game-bg-mid">
+                <span>Sing up</span>
+              </span>
+              <span class="button-game-bg-right"></span>
+            </button>
           </div>
-          <div class="avatar-frame">
-            <span class="no-avatar"></span>
-            <span class="border"></span>
+        </div>
+        <div class="header-bottom">
+          <div class="div"></div>
+          <!-- <form action="#" class="form__registration">
+            <input
+              type="text"
+              id="inputUserName"
+              class="form__registration--control"
+              placeholder="User name *"
+              required=""
+              autofocus=""
+            />
+            <input
+              type="email"
+              id="inputEmail"
+              class="form__registration--control"
+              placeholder="Email address *"
+              required=""
+            />
+            <input
+              type="password"
+              id="inputPassword"
+              class="form__registration--control"
+              placeholder="Password *"
+              required=""
+            />
+
+            <button
+              class="btn btn-success btn-block"
+              id="loginbtn"
+              type="button"
+            >
+              Sign in
+            </button>
+            <button
+              class="btn btn-success btn-block"
+              id="logoutbtn"
+              type="button"
+            >
+              Logout
+            </button>
+            <button
+              class="btn btn-success btn-block"
+              id="singupbtn"
+              type="button"
+            >
+              Sign up
+            </button>
+          </form> -->
+          <nav class="navigation">
+            <div class="user-name">You are not registered yet</div>
+            <div class="avatar-frame">
+              <span class="no-avatar"></span>
+              <span class="border"></span>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="body">
+        <div class="body-top">
+          <div class="body-bot">
+            <!-- <div class="home-banner-section">
+              <div class="home-banner">
+                <div class="stat-wrap">
+                  <h2 class="stat__title">Best players</h2>
+                  <ul class="players-list">
+                    <li class="player">Maximus - 324 points</li>
+                    <li class="player">IvanPower - 302 points</li>
+                    <li class="player">NikitosBarbarian - 289 points</li>
+                    <li class="player">Barmaley - 288 points</li>
+                    <li class="player">Kolyamba - 124 point</li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+            <div class="stat-wrap">
+              <h2 class="stat__title">TOP-10 players</h2>
+              <ul class="players-list">
+                <li class="player">Maximus - 324 points</li>
+                <li class="player">IvanPower - 302 points</li>
+                <li class="player">NikitosBarbarian - 289 points</li>
+                <li class="player">Barmaley - 288 points</li>
+                <li class="player">Kolyamba - 124 point</li>
+                <li class="player">Maximus - 324 points</li>
+                <li class="player">IvanPower - 302 points</li>
+                <li class="player">NikitosBarbarian - 289 points</li>
+                <li class="player">Barmaley - 288 points</li>
+                <li class="player">Kolyamba - 124 point</li>
+              </ul>
+            </div>
+            <div class="chat-gem-container">
+              <span class="chat-gem"></span>
+            </div>
           </div>
-        </nav>
+        </div>
+        <div class="body-trail"></div>
       </div>
 
       <div class="snake-wrp">
@@ -110,29 +179,6 @@
           </span>
           <span class="button-game-bg-right"></span>
         </button>
-      </div>
-
-      <div class="body">
-        <div class="body-top">
-          <div class="body-bot">
-            <div class="home-banner-section">
-              <div class="home-banner">
-                <div class="stat-wrap">
-                  <h2 class="stat__title">Best players</h2>
-                  <ul class="players-list">
-                    <li class="player">Maximus - 324 points</li>
-                    <li class="player">IvanPower - 302 points</li>
-                    <li class="player">NikitosBarbarian - 289 points</li>
-                    <li class="player">Barmaley - 288 points</li>
-                    <li class="player">Kolyamba - 124 point</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="chat-gem-container"></div>
-          </div>
-        </div>
-        <div class="body-trail"></div>
       </div>
 
       <footer class="footer"></footer>

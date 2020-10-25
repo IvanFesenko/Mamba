@@ -93,16 +93,48 @@ input[type='radio'].visually-hidden {
   position: relative;
 }
 
-.head {
+.header {
+  position: relative;
+}
+
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 200;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  color: #00aeff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.logo-text span {
+  display: block;
+}
+
+.icon {
+  display: block;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 36px;
+}
+
 .homepage .body {
-  margin-top: 565px;
   padding-top: 0;
 }
 
@@ -120,12 +152,15 @@ input[type='radio'].visually-hidden {
 
 .navigation {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  background: url('../images/login-full.jpg') no-repeat;
+  width: 343px;
 }
 
-.sing-in-wrap {
-  margin-right: 15px;
+.user-name {
+  padding-left: 40px;
+  font-weight: 400;
 }
 
 .button-game {
@@ -136,6 +171,7 @@ input[type='radio'].visually-hidden {
   position: relative;
   text-align: center;
   color: #ad835a;
+  background-color: transparent;
 }
 
 .button-game-bg-left {
@@ -261,7 +297,7 @@ input[type='radio'].visually-hidden {
 
 .body-top {
   background: url('../images/content-top.jpg') 0 0 no-repeat;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .body-top::before {
@@ -281,6 +317,8 @@ input[type='radio'].visually-hidden {
   background: url('../images/content-bot-bg.jpg') no-repeat 0 100%;
   min-height: 300px;
   padding-bottom: 242px;
+  padding-left: 50px;
+  padding-right: 50px;
   position: relative;
 }
 
@@ -305,6 +343,20 @@ input[type='radio'].visually-hidden {
   position: relative;
   top: -555px;
   width: 1150px;
+}
+
+.body-bot .chat-gem {
+  width: inherit;
+  height: inherit;
+  background: url('../images/chatgem-gem-active.png') no-repeat 32px 0px;
+  position: absolute;
+  outline: 0;
+  opacity: 0;
+  transition: opacity 0.333s linear;
+}
+
+.body-bot .chat-gem:hover {
+  opacity: 1;
 }
 
 .home-banner {
