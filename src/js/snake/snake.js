@@ -1,5 +1,6 @@
 const startButton = document.querySelector('.snake-start');
 const canvas = document.querySelector('#canvas');
+const modeWrp = document.querySelector('.mode-wrp');
 const ctx = canvas.getContext('2d');
 
 import '../../css/snake.css';
@@ -102,10 +103,11 @@ class Block {
 
 //=========SNAKE========
 class Snake {
-  constructor() {
+  constructor(mode) {
     this.segments = [new Block(7, 5), new Block(6, 5), new Block(5, 5)];
     this.direction = 'right';
     this.nextDirection = 'right';
+    this.mode = mode;
   }
   draw() {
     // this.segments.forEach((element) => element.drawSquare("blue"));
@@ -155,7 +157,7 @@ class Snake {
     }
   }
 
-  ignoreWallsCollision(
+  ignoreWallsCollisionMode(
     leftCollision,
     topCollision,
     rightCollision,
@@ -175,8 +177,12 @@ class Snake {
     } else if (wallCollision && bottomCollision) {
       head.row = 1;
     }
-    console.log(selfCollision);
+
     return selfCollision;
+  }
+
+  classicMode(wallCollision, selfCollision) {
+    return wallCollision || selfCollision; // if snake has dtp wit wall or herself
   }
 
   checkCollision(head) {
@@ -194,17 +200,22 @@ class Snake {
       }
     });
 
-    // return this.ignoreWallsCollision(
-    //   leftCollision,
-    //   topCollision,
-    //   rightCollision,
-    //   bottomCollision,
-    //   wallCollision,
-    //   selfCollision,
-    //   head
-    // );
+    console.log(this.mode);
+    if (this.mode === 'classic') {
+      return this.classicMode(wallCollision, selfCollision);
+    } else if (this.mode === 'ignoreWallsCollisionMode') {
+      return this.ignoreWallsCollisionMode(
+        leftCollision,
+        topCollision,
+        rightCollision,
+        bottomCollision,
+        wallCollision,
+        selfCollision,
+        head,
+      );
+    }
 
-    return wallCollision || selfCollision; // if snake has dtp wit wall or herself
+    // return wallCollision || selfCollision; // if snake has dtp wit wall or herself
   }
 
   setDirection(newDirection) {
@@ -242,13 +253,13 @@ class Apple {
 
 //__________create snake and apple__________
 const apple = new Apple();
-const snake = new Snake();
+let snake = null;
+// const snake = new Snake('ignoreWallsCollisionMode');
 
 //================
 
 const gameLoop = function () {
-  console.log(snake);
-  if (snake) {
+  if (!!snake) {
     ctx.clearRect(0, 0, width, height);
     drawScore();
     snake.move();
@@ -262,14 +273,10 @@ const gameLoop = function () {
     startButton.setAttribute('disabled', 'disabled');
   }
 };
-// drawBorder();
+drawBorder();
 gameLoop();
 
 //start
-startButton.addEventListener('click', () => {
-  // gameLoop();
-  window.location.reload();
-});
 
 const directionsMaker = e => {
   const newDirection = directions[e.code];
@@ -278,3 +285,11 @@ const directionsMaker = e => {
   }
 };
 document.addEventListener('keydown', directionsMaker);
+startButton.addEventListener('click', () => {
+  // gameLoop();
+  window.location.reload();
+});
+modeWrp.addEventListener('click', e => {
+  const mode = e.target.dataset.mode;
+  snake = new Snake(mode);
+});
