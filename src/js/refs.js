@@ -1,5 +1,6 @@
 const Refs = {
   email: document.querySelector("#inputEmail"),
+  userName: document.querySelector("#inputUserName"),  
   password: document.querySelector("#inputPassword"),
   login: document.querySelector("#loginbtn"),
   singup: document.querySelector("#singupbtn"),
