@@ -6,7 +6,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  /* box-sizing: inherit; */
   padding: 0;
   margin: 0;
 }
@@ -87,9 +87,23 @@ input[type='radio'].visually-hidden {
   overflow: hidden;
 }
 
-.container {
-  width: 944px;
+.wrapper {
+  width: 994px;
   margin: 0 auto;
+  position: relative;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 200;
+}
+
+.homepage .body {
+  margin-top: 565px;
+  padding-top: 0;
 }
 
 .form__registration--control {
@@ -213,4 +227,116 @@ input[type='radio'].visually-hidden {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.body {
+  background: #12110f url('../images/content-bg.jpg') 0 0 repeat;
+  margin: 76px 0 42px;
+  position: relative;
+}
+
+.body::before {
+  background: url('../images/content-glow-sides.png');
+  bottom: 61px;
+  content: '';
+  left: -196px;
+  pointer-events: none;
+  position: absolute;
+  top: 61px;
+  width: 200px;
+  z-index: 100;
+}
+
+.body::after {
+  background: url('../images/content-glow-sides.png') 100% 0;
+  bottom: 61px;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  right: -196px;
+  top: 61px;
+  width: 200px;
+  z-index: 100;
+}
+
+.body-top {
+  background: url('../images/content-top.jpg') 0 0 no-repeat;
+  padding-top: 20px;
+}
+
+.body-top::before {
+  background: url('../images/content-glow-top.png');
+  content: '';
+  height: 261px;
+  left: 50%;
+  margin-left: -693px;
+  pointer-events: none;
+  position: absolute;
+  top: -200px;
+  width: 1386px;
+  z-index: 150;
+}
+
+.body-bot {
+  background: url('../images/content-bot-bg.jpg') no-repeat 0 100%;
+  min-height: 300px;
+  padding-bottom: 242px;
+  position: relative;
+}
+
+.body-bot::after {
+  background: url('../images/content-glow-bottom.png');
+  bottom: -200px;
+  content: '';
+  height: 261px;
+  left: 50%;
+  margin-left: -693px;
+  pointer-events: none;
+  position: absolute;
+  width: 1386px;
+  z-index: 150;
+}
+
+.home-banner-section {
+  background: url('../images/home-hero-frame.png') no-repeat;
+  left: -104px;
+  margin-bottom: -518px;
+  padding: 25px 24px 33px;
+  position: relative;
+  top: -555px;
+  width: 1150px;
+}
+
+.home-banner {
+  min-height: 386px;
+  padding: 70px 45px 0;
+  position: relative;
+  text-align: center;
+}
+
+.homepage .body-trail {
+  display: none;
+}
+
+.body-trail {
+  height: 41px;
+  left: 0;
+  position: absolute;
+  top: -47px;
+  width: 994px;
+  z-index: 100;
+}
+
+.body-bot .chat-gem-container {
+  position: absolute;
+  left: 440px;
+  bottom: -35px;
+  width: 110px;
+  height: 75px;
+  background: url('../images/chatgem-main-body-gem.png') no-repeat;
+  z-index: 175;
+}
+
+.footer {
+  padding: 50px 0;
 }
