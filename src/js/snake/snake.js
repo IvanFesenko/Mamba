@@ -1,3 +1,6 @@
+const MODE_CLASSIC = 'classic';
+const MODE_IGNORE_WALLS_COLLISION = 'ignoreWallsCollisionMode';
+
 const startButton = document.querySelector('.snake-start');
 const canvas = document.querySelector('#canvas');
 const modeWrp = document.querySelector('.mode-wrp');
@@ -103,7 +106,7 @@ class Block {
 
 //=========SNAKE========
 class Snake {
-  constructor(mode) {
+  constructor(mode = 'classic') {
     this.segments = [new Block(7, 5), new Block(6, 5), new Block(5, 5)];
     this.direction = 'right';
     this.nextDirection = 'right';
@@ -200,19 +203,20 @@ class Snake {
       }
     });
 
-    console.log(this.mode);
-    if (this.mode === 'classic') {
-      return this.classicMode(wallCollision, selfCollision);
-    } else if (this.mode === 'ignoreWallsCollisionMode') {
-      return this.ignoreWallsCollisionMode(
-        leftCollision,
-        topCollision,
-        rightCollision,
-        bottomCollision,
-        wallCollision,
-        selfCollision,
-        head,
-      );
+    if (this.mode !== null) {
+      if (this.mode === MODE_CLASSIC) {
+        return this.classicMode(wallCollision, selfCollision);
+      } else if (this.mode === MODE_IGNORE_WALLS_COLLISION) {
+        return this.ignoreWallsCollisionMode(
+          leftCollision,
+          topCollision,
+          rightCollision,
+          bottomCollision,
+          wallCollision,
+          selfCollision,
+          head,
+        );
+      }
     }
 
     // return wallCollision || selfCollision; // if snake has dtp wit wall or herself
@@ -251,13 +255,19 @@ class Apple {
   }
 }
 
+//game mode
+
+if (localStorage.getItem('mode') === null) {
+  localStorage.setItem('mode', 'classic');
+}
+
 //__________create snake and apple__________
 const apple = new Apple();
-let snake = null;
+const snake = new Snake(localStorage.getItem('mode'));
 // const snake = new Snake('ignoreWallsCollisionMode');
 
 //================
-
+//start actions
 const gameLoop = function () {
   if (!!snake) {
     ctx.clearRect(0, 0, width, height);
@@ -276,20 +286,25 @@ const gameLoop = function () {
 drawBorder();
 gameLoop();
 
-//start
-
+//handlers
 const directionsMaker = e => {
   const newDirection = directions[e.code];
   if (newDirection !== undefined) {
     snake.setDirection(newDirection);
   }
 };
-document.addEventListener('keydown', directionsMaker);
-startButton.addEventListener('click', () => {
-  // gameLoop();
+
+const startBtnHandler = () => {
   window.location.reload();
-});
-modeWrp.addEventListener('click', e => {
+  // gameLoop();
+};
+
+const setNewMode = e => {
   const mode = e.target.dataset.mode;
-  snake = new Snake(mode);
-});
+  localStorage.setItem('mode', mode);
+};
+
+//listeners
+document.addEventListener('keydown', directionsMaker);
+startButton.addEventListener('click', startBtnHandler);
+modeWrp.addEventListener('click', setNewMode);
