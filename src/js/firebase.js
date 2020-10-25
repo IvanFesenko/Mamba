@@ -5,6 +5,10 @@ import 'firebase/auth';
 import 'firebase/database';
 
 
+Refs.login.addEventListener('click', authorization);
+Refs.logout.addEventListener('click', logOut);
+Refs.singup.addEventListener('click', singUp);
+
 
 firebase.initializeApp({
     apiKey: "AIzaSyBMhO0NQUdNhSwM2MzfffK0CnXNvO-SQ5Q",
@@ -16,7 +20,7 @@ firebase.initializeApp({
     appId: "1:1059522027824:web:73740d4b7a4ff4094228f5"
   });
 
-
+// будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
     console.log(fbUser);
@@ -34,13 +38,8 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.password.style.display = 'inline-block';
     Refs.userName.style.display = 'inline-block';  
   }
-
 });
 
-
-Refs.login.addEventListener('click', authorization);
-Refs.logout.addEventListener('click', logOut);
-Refs.singup.addEventListener('click', singUp);
 
 function authorization(e) { 
   e.preventDefault();
@@ -49,10 +48,12 @@ function authorization(e) {
   promise.catch(e => console.error(e.message));
 }
 
+
 function logOut(e) { 
   e.preventDefault();
   firebase.auth().signOut();
 }
+
 
 async function singUp(e) { 
   e.preventDefault();
@@ -72,6 +73,7 @@ async function singUp(e) {
   }  
 }
 
+
 async function addUserToDB({ user }, userName) {
   try { 
     const { uid, email } = user;
@@ -87,9 +89,11 @@ async function addUserToDB({ user }, userName) {
   }
 }
 
+
 function getCurrentUserID() {
   return firebase.auth().currentUser.uid;
 }
+
 
 async function userNameAvailable(userName) {
   try {
