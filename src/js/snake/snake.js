@@ -13,6 +13,42 @@ let playing = true;
 let snake = null;
 let score = 0;
 
+//handlers
+const arrowKeysHandler = e => {
+  console.log('block');
+  switch (e.code) {
+    case 'ArrowLeft':
+    case 'ArrowUp':
+    case 'ArrowRight':
+    case 'ArrowDown':
+    case 'Space':
+      e.preventDefault();
+      break; // Space
+    default:
+      break; // do not block other keys
+  }
+};
+
+const directionsMaker = e => {
+  const newDirection = directions[e.code];
+  if (newDirection !== undefined) {
+    console.log(snake);
+    snake.setDirection(newDirection);
+  }
+};
+
+const startBtnHandler = () => {
+  createNewSnake();
+  gameLoop();
+};
+
+const setNewMode = e => {
+  const mode = e.target.dataset.mode;
+  if (mode) {
+    console.log(mode);
+    localStorage.setItem('mode', mode);
+  }
+};
 // const drawScore = () => {
 //   ctx.font = '20px Courier';
 //   ctx.fillStyle = '#fff';
@@ -32,7 +68,6 @@ grd.addColorStop(0.5, '#38d9de  ');
 grd.addColorStop(1, '#33d9de ');
 
 const drawBorder = () => {
-  // ctx.fillStyle = '#6ab1d7 ';
   ctx.fillStyle = grd;
   ctx.fillRect(0, 0, width, blockSize);
   ctx.fillRect(0, height - blockSize, width, blockSize);
@@ -50,6 +85,7 @@ export const gameOver = () => {
     modeInputs.forEach(e => {
       e.removeAttribute('disabled', 'disabled');
     });
+    window.removeEventListener('keydown', arrowKeysHandler, false);
   }
 
   ctx.font = '500 60px Arial';
@@ -101,31 +137,10 @@ const gameLoop = function () {
     modeInputs.forEach(e => {
       e.setAttribute('disabled', 'disabled');
     });
+    window.addEventListener('keydown', arrowKeysHandler, false);
   }
 };
 drawBorder();
-
-//handlers
-const directionsMaker = e => {
-  const newDirection = directions[e.code];
-  if (newDirection !== undefined) {
-    console.log(snake);
-    snake.setDirection(newDirection);
-  }
-};
-
-const startBtnHandler = () => {
-  createNewSnake();
-  gameLoop();
-};
-
-const setNewMode = e => {
-  const mode = e.target.dataset.mode;
-  if (mode) {
-    console.log(mode);
-    localStorage.setItem('mode', mode);
-  }
-};
 
 //listeners
 document.addEventListener('keydown', directionsMaker);
