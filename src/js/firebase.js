@@ -184,33 +184,3 @@ export async function userGetTop(score) {
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
-
-const Stats = [
-  { name: 'test10', score: 10 },
-  { name: 'test9', score: 2 },
-  { name: 'test8', score: 3 },
-  { name: 'test10', score: 4 },
-  { name: 'test6', score: 5 },
-  { name: 'test3', score: 3 },
-  { name: 'test1', score: 7 },
-  { name: 'test3', score: 8 },
-  { name: 'test10', score: 9 },
-  { name: 'test1', score: 10 },
-];
-
-// console.log(result);
-
-// const uniqStats = Array.from(
-//   new Set(
-//     Stats.map(s => s.name).map(name => {
-//       return {
-//         name: name,
-//         score: Stats.find(s => s.name === name),
-//       };
-//     }),
-//   ),
-// );
-// for (let i = 0; i <= Stats.length; i++) {
-//   console.log(Stats[i]);
-// }
-// console.log(uniqStats);
