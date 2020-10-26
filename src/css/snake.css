@@ -21,16 +21,11 @@ body {
   display: block;
   margin: 0 auto;
   background-color: transparent;
-  color: gold;
   font-size: 25px;
   text-align: center;
   text-transform: uppercase;
   transition: all 0.25s linear;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.snake-start:hover {
-  transform: scale(1.1);
 }
 
 .snake-start:disabled {
