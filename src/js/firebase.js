@@ -96,6 +96,15 @@ function getCurrentUserID() {
   return firebase.auth().currentUser.uid;
 }
 
+async function getUserName() {
+  const userID = getCurrentUserID();
+  const db = firebase.database();
+  const user = db.ref(`/users/${userID}/userName`);
+  const dataSnapshot = await user.once('value');
+  const data = dataSnapshot.val();
+  console.log(data);
+}
+
 async function userNameAvailable(userName) {
   try {
     const db = firebase.database();
@@ -125,6 +134,36 @@ export async function updateUserStats(newScore) {
     stats.maxScore = newScore;
   }
   const db = firebase.database();
-  const Stats = db.ref(`/stats/${userID}`);  
-  Stats.set(stats); //{ total: 0, maxScore: 0 }
+  const Stats = db.ref(`/stats/${userID}`);
+  Stats.set(stats);
+}
+
+async function updateTopStats(newStats) {
+  const db = firebase.database();
+  const stats = db.ref('TOP10');
+  const sortedStats = getSortedTopList(newStats);
+  stats.set(sortedStats);
+}
+
+export async function getTopStats() {
+  const db = firebase.database();
+  const topStats = db.ref('TOP10');
+  const dataSnapshot = await topStats.once('value');
+  return dataSnapshot.val();
+}
+
+export async function userGetTop(score) {
+  const topStats = await getTopStats();
+  const minScore = topStats[topStats.length - 1];
+  if (score > minScore) {
+    const name = await getUserName();
+    topStats[topStats.length - 1] = { name, score };
+    updateTopStats(topStats);
+    return true;
+  }
+  return false;
+}
+
+function getSortedTopList(list) {
+  return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
