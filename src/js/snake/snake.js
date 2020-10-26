@@ -43,9 +43,10 @@ const drawBorder = () => {
 };
 //============================
 
+
 export const gameOver = () => {
   playing = false;
-  updateUserStats(score);
+  updateUserStats(score);  
   if (userGetTop(score)) {
     // можно что-то показать
   }

@@ -1,4 +1,5 @@
 import Refs from './refs';
+import {setStatsHTML} from './stats';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -159,8 +160,9 @@ export async function userGetTop(score) {
   const minScore = topStats[topStats.length - 1];
   if (score > minScore.score) {
     const name = await getUserName();
-    topStats[topStats.length - 1] = { name, score };
-    updateTopStats(topStats);
+    topStats[topStats.length - 1] = { name, score };    
+    await updateTopStats(topStats);
+    setStatsHTML();
     return true;
   }
   return false;
