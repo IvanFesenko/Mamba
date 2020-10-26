@@ -21,7 +21,6 @@ firebase.initializeApp({
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
-    console.log(fbUser);
     Refs.logout.style.display = 'inline';
     Refs.login.style.display = 'none';
     Refs.userName.style.display = 'none';
@@ -92,6 +91,10 @@ async function addUserToDB({ user }, userName) {
   }
 }
 
+export function userLoggedIn() {
+  return firebase.auth().currentUser ? true : false;
+}
+
 function getCurrentUserID() {
   return firebase.auth().currentUser.uid;
 }
@@ -101,8 +104,7 @@ async function getUserName() {
   const db = firebase.database();
   const user = db.ref(`/users/${userID}/userName`);
   const dataSnapshot = await user.once('value');
-  const data = dataSnapshot.val();
-  console.log(data);
+  return dataSnapshot.val();
 }
 
 async function userNameAvailable(userName) {
@@ -155,7 +157,7 @@ export async function getTopStats() {
 export async function userGetTop(score) {
   const topStats = await getTopStats();
   const minScore = topStats[topStats.length - 1];
-  if (score > minScore) {
+  if (score > minScore.score) {
     const name = await getUserName();
     topStats[topStats.length - 1] = { name, score };
     updateTopStats(topStats);

@@ -38,13 +38,13 @@ class Snake {
     let isEvenSegment = false;
     for (let i = 0; i < this.segments.length; i += 1) {
       if (isEvenSegment) {
-        this.segments[i].drawSquare('gold');
+        this.segments[i].drawSquare('#33d9de ');
       } else {
-        this.segments[i].drawSquare('blue');
+        this.segments[i].drawSquare('#6ab1d7 ');
       }
       isEvenSegment = !isEvenSegment;
     }
-    this.segments[0].drawSquare('silver');
+    this.segments[0].drawSquare('#fff');
   }
 
   move() {

@@ -3,47 +3,64 @@ import directions from './directions';
 import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
-import { startButton, canvas, modeWrp } from './snakeRefs';
+import Refs from '../refs';
+//import { startButton, canvas, modeWrp } from './snakeRefs';
+import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
-const modeInputs = modeWrp.querySelectorAll('input');
-console.log();
-export const ctx = canvas.getContext('2d');
+
+const modeInputs = Refs.modeWrp.querySelectorAll('input');
+export const ctx = Refs.canvas.getContext('2d');
 
 let playing = true;
 let snake = null;
 let score = 0;
 
-const drawScore = () => {
-  ctx.font = '20px Courier';
-  ctx.fillStyle = 'Gold';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'top';
-  // ctx.globalCompositeOperation = 'destination-over'; //что-то на подобии з-индекса надо тестировать
-  ctx.fillText('Score: ' + score, blockSize, blockSize);
-};
+// const drawScore = () => {
+//   ctx.font = '20px Courier';
+//   ctx.fillStyle = '#fff';
+//   ctx.textAlign = 'left';
+//   ctx.textBaseline = 'top';
+//   // ctx.globalCompositeOperation = 'destination-over'; //что-то на подобии з-индекса надо тестировать
+//   ctx.fillText('Score: ' + score, blockSize, blockSize);
+// };
+
+// add listener to disable scroll
 
 // ========border========
+
+const grd = ctx.createLinearGradient(0, 0, 170, 0);
+grd.addColorStop(0, '#6ab1d7 ');
+grd.addColorStop(0.5, '#38d9de  ');
+grd.addColorStop(1, '#33d9de ');
+
 const drawBorder = () => {
-  ctx.fillStyle = 'Gray';
+  // ctx.fillStyle = '#6ab1d7 ';
+  ctx.fillStyle = grd;
   ctx.fillRect(0, 0, width, blockSize);
   ctx.fillRect(0, height - blockSize, width, blockSize);
   ctx.fillRect(0, 0, blockSize, height);
   ctx.fillRect(width - blockSize, 0, blockSize, height);
 };
+//============================
 
 export const gameOver = () => {
   playing = false;
+  updateUserStats(score);
+  if (userGetTop(score)) {
+    // можно что-то показать
+  }
+
   snake.setScore = 0;
   if (!playing) {
-    startButton.removeAttribute('disabled', 'disabled');
+    Refs.startButton.removeAttribute('disabled', 'disabled');
     // document.removeEventListener('keydown', directionsMaker);
     modeInputs.forEach(e => {
       e.removeAttribute('disabled', 'disabled');
     });
   }
 
-  ctx.font = '60px Courier';
-  ctx.fillStyle = 'Gold';
+  ctx.font = '500 60px Arial';
+  ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText('Game Over', width / 2, height / 2);
@@ -53,6 +70,15 @@ export const gameOver = () => {
 
 if (localStorage.getItem('mode') === null) {
   localStorage.setItem('mode', MODE_CLASSIC);
+}
+
+if (localStorage.getItem('mode') !== null) {
+  const mode = localStorage.getItem('mode');
+  modeInputs.forEach(e => {
+    if (mode === e.dataset.mode) {
+      e.setAttribute('checked', 'checked');
+    }
+  });
 }
 
 //__________create snake and apple__________
@@ -69,7 +95,7 @@ const gameLoop = function () {
     animationTime = snake.getAnimationTime;
     score = snake.getScore;
     ctx.clearRect(0, 0, width, height);
-    drawScore();
+    Refs.snakeScore.textContent = `Score: ${score}`;
     snake.move();
     snake.draw();
     apple.draw();
@@ -78,7 +104,7 @@ const gameLoop = function () {
 
   if (playing) {
     setTimeout(gameLoop, animationTime);
-    startButton.setAttribute('disabled', 'disabled');
+    Refs.startButton.setAttribute('disabled', 'disabled');
     modeInputs.forEach(e => {
       e.setAttribute('disabled', 'disabled');
     });
@@ -96,8 +122,12 @@ const directionsMaker = e => {
 };
 
 const startBtnHandler = () => {
-  createNewSnake();
-  gameLoop();
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sing in first');
+  }
 };
 
 const setNewMode = e => {
@@ -110,5 +140,5 @@ const setNewMode = e => {
 
 //listeners
 document.addEventListener('keydown', directionsMaker);
-startButton.addEventListener('click', startBtnHandler);
-modeWrp.addEventListener('click', setNewMode);
+Refs.startButton.addEventListener('click', startBtnHandler);
+Refs.modeWrp.addEventListener('click', setNewMode);

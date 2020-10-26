@@ -5,7 +5,7 @@ import './scss/base.scss';
 
 //
 
-import './js/scrypt.js';
+import './js/script.js';
 import './js/snake/snake.js';
 import './js/stats.js'
 
