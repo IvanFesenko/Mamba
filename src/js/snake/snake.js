@@ -4,6 +4,8 @@ import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import { startButton, canvas, modeWrp } from './snakeRefs';
+import { updateUserStats, userGetTop } from '../firebase';
+
 import '../../css/snake.css';
 const modeInputs = modeWrp.querySelectorAll('input');
 console.log();
@@ -33,6 +35,11 @@ const drawBorder = () => {
 
 export const gameOver = () => {
   playing = false;
+  updateUserStats(score);
+  if (userGetTop(score)) {
+    // можно что-то показать
+  }
+
   snake.setScore = 0;
   if (!playing) {
     startButton.removeAttribute('disabled', 'disabled');
