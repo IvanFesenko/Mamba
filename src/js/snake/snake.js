@@ -5,6 +5,7 @@ import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
 //import { startButton, canvas, modeWrp } from './snakeRefs';
+import { setStatsHTML } from '../stats';
 import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
 
@@ -43,12 +44,13 @@ const drawBorder = () => {
 };
 //============================
 
-
 export const gameOver = () => {
   playing = false;
-  updateUserStats(score);  
+  updateUserStats(score);
   if (userGetTop(score)) {
     // можно что-то показать
+  } else {
+    setStatsHTML();
   }
 
   snake.setScore = 0;

@@ -1,5 +1,5 @@
 import Refs from './refs';
-import {setStatsHTML} from './stats';
+import { setStatsHTML } from './stats';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -28,6 +28,7 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.singup.style.display = 'none';
     Refs.email.style.display = 'none';
     Refs.password.style.display = 'none';
+    Refs.game.style.display = 'block';
   } else {
     Refs.logout.style.display = 'none';
     Refs.login.style.display = 'inline';
@@ -35,6 +36,7 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.email.style.display = 'inline-block';
     Refs.password.style.display = 'inline-block';
     Refs.userName.style.display = 'inline-block';
+    Refs.game.style.display = 'none';
   }
 });
 
@@ -160,7 +162,7 @@ export async function userGetTop(score) {
   const minScore = topStats[topStats.length - 1];
   if (score > minScore.score) {
     const name = await getUserName();
-    topStats[topStats.length - 1] = { name, score };    
+    topStats[topStats.length - 1] = { name, score };
     await updateTopStats(topStats);
     setStatsHTML();
     return true;
