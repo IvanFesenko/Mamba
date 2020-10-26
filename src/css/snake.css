@@ -25,13 +25,18 @@ body {
   text-align: center;
   text-transform: uppercase;
   transition: all 0.25s linear;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .snake-start:disabled {
   cursor: not-allowed;
   filter: grayscale(80%);
   transform: scale(1);
+}
+
+.snake-score {
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 16px;
 }
 
 .options {
@@ -65,7 +70,8 @@ body {
   align-items: center;
   cursor: pointer;
   position: relative;
-  color: gold;
+  color: #fff;
+  transition: all 0.25s ease;
 }
 
 .options__label::before {
@@ -87,6 +93,12 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: gold;
+  background-image: linear-gradient(
+    45deg,
+    #6ab1d7 0%,
+    #33d9de 50%,
+    #002878 100%
+  );
+  background-position: 100% 0;
   transform: scale(0);
 }

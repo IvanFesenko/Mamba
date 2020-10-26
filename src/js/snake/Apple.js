@@ -7,7 +7,7 @@ class Apple {
   }
 
   draw() {
-    this.position.drawCircle('Gold');
+    this.position.drawCircle('yellow');
   }
 
   move() {

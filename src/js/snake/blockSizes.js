@@ -1,7 +1,7 @@
-import { canvas } from './snakeRefs';
+import Refs from '../refs';
 
-export const width = canvas.width;
-export const height = canvas.height;
+export const width = Refs.canvas.width;
+export const height = Refs.canvas.height;
 
 //=======blocks======
 export const blockSize = 12;
