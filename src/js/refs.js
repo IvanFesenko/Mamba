@@ -9,6 +9,7 @@ const Refs = {
   canvas: document.querySelector('#canvas'),
   modeWrp: document.querySelector('.mode-wrp'),
   snakeScore: document.querySelector('.snake-score'),
+  topList: document.querySelector('.players-list')
 };
 
 export default Refs;

@@ -1,9 +1,8 @@
-import {getTopStats, getUserStats} from './firebase'
-const topList = document.querySelector('.players-list')
+import {getTopStats, getUserStats} from './firebase';
+import refs from './refs';
 
-getTopStats().then(setStatsHTML);
-
-function setStatsHTML(data) {    
+export async function setStatsHTML() {  
+    const data = await getTopStats();
     const statsHTML = `
               <li class="player bg-place">
                 <span class="players-number pn-one">1</span>
@@ -46,5 +45,5 @@ function setStatsHTML(data) {
                 ${data[9].name} - ${data[9].score} points
               </li>
 `;
-topList.innerHTML = statsHTML;
+refs.topList.innerHTML = statsHTML;
 }

@@ -7,7 +7,6 @@ import './scss/base.scss';
 
 import './js/script.js';
 import './js/snake/snake.js';
-import './js/stats.js'
 
 // setup materialize components
 // document.addEventListener('DOMContentLoaded', function () {
