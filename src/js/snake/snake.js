@@ -4,7 +4,6 @@ import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
-//import { startButton, canvas, modeWrp } from './snakeRefs';
 import { setStatsHTML } from '../stats';
 import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
@@ -16,16 +15,54 @@ let playing = true;
 let snake = null;
 let score = 0;
 
-// const drawScore = () => {
-//   ctx.font = '20px Courier';
-//   ctx.fillStyle = '#fff';
-//   ctx.textAlign = 'left';
-//   ctx.textBaseline = 'top';
-//   // ctx.globalCompositeOperation = 'destination-over'; //что-то на подобии з-индекса надо тестировать
-//   ctx.fillText('Score: ' + score, blockSize, blockSize);
-// };
+//handlers
+const arrowKeysHandler = e => {
+  console.log('block');
+  switch (e.code) {
+    case 'ArrowLeft':
+    case 'ArrowUp':
+    case 'ArrowRight':
+    case 'ArrowDown':
+    case 'Space':
+      e.preventDefault();
+      break; // Space
+    default:
+      break; // do not block other keys
+  }
+};
 
-// add listener to disable scroll
+const directionsMaker = e => {
+  const newDirection = directions[e.code];
+  if (newDirection !== undefined) {
+    console.log(snake);
+    snake.setDirection(newDirection);
+  }
+};
+
+const startBtnHandler = () => {
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sign in first');
+  }
+};
+
+const setNewMode = e => {
+  const mode = e.target.dataset.mode;
+  if (mode) {
+    console.log(mode);
+    localStorage.setItem('mode', mode);
+  }
+};
+
+const drawGameOver = () => {
+  ctx.font = '500 60px Arial';
+  ctx.fillStyle = '#fff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Game Over', width / 2, height / 2);
+};
 
 // ========border========
 
@@ -35,7 +72,6 @@ grd.addColorStop(0.5, '#38d9de  ');
 grd.addColorStop(1, '#33d9de ');
 
 const drawBorder = () => {
-  // ctx.fillStyle = '#6ab1d7 ';
   ctx.fillStyle = grd;
   ctx.fillRect(0, 0, width, blockSize);
   ctx.fillRect(0, height - blockSize, width, blockSize);
@@ -46,6 +82,7 @@ const drawBorder = () => {
 
 export const gameOver = () => {
   playing = false;
+
   updateUserStats(score);
   if (userGetTop(score)) {
     // можно что-то показать
@@ -54,19 +91,17 @@ export const gameOver = () => {
   }
 
   snake.setScore = 0;
+
   if (!playing) {
     Refs.startButton.removeAttribute('disabled', 'disabled');
     // document.removeEventListener('keydown', directionsMaker);
     modeInputs.forEach(e => {
       e.removeAttribute('disabled', 'disabled');
     });
+    window.removeEventListener('keydown', arrowKeysHandler, false);
   }
 
-  ctx.font = '500 60px Arial';
-  ctx.fillStyle = '#fff';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('Game Over', width / 2, height / 2);
+  drawGameOver();
 };
 
 //game mode
@@ -111,35 +146,10 @@ const gameLoop = function () {
     modeInputs.forEach(e => {
       e.setAttribute('disabled', 'disabled');
     });
+    window.addEventListener('keydown', arrowKeysHandler, false);
   }
 };
 drawBorder();
-
-//handlers
-const directionsMaker = e => {
-  const newDirection = directions[e.code];
-  if (newDirection !== undefined) {
-    console.log(snake);
-    snake.setDirection(newDirection);
-  }
-};
-
-const startBtnHandler = () => {
-  if (userLoggedIn()) {
-    createNewSnake();
-    gameLoop();
-  } else {
-    alert('You need to sing in first');
-  }
-};
-
-const setNewMode = e => {
-  const mode = e.target.dataset.mode;
-  if (mode) {
-    console.log(mode);
-    localStorage.setItem('mode', mode);
-  }
-};
 
 //listeners
 document.addEventListener('keydown', directionsMaker);

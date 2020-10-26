@@ -73,7 +73,18 @@ class Snake {
 
     if (newHead.equal(apple.position)) {
       this.score += 1;
-      this.animationTime -= 2;
+
+      //нужно добавить проверку на аниматион тайм меньше 1
+      if (this.animationTime >= 3) {
+        if (this.mode === MODE_CLASSIC) {
+          this.animationTime -= 2;
+        } else if (this.mode === MODE_IGNORE_WALLS_COLLISION) {
+          this.animationTime -= 3;
+        }
+      } else if (this.animationTime === 1 || this.animationTime === 0) {
+        this.animationTime = 1;
+      }
+
       apple.move();
     } else {
       this.segments.pop();
