@@ -4,6 +4,8 @@ import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
+import { setStatsHTML } from '../stats';
+import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
 
 const modeInputs = Refs.modeWrp.querySelectorAll('input');
@@ -49,16 +51,6 @@ const setNewMode = e => {
     localStorage.setItem('mode', mode);
   }
 };
-// const drawScore = () => {
-//   ctx.font = '20px Courier';
-//   ctx.fillStyle = '#fff';
-//   ctx.textAlign = 'left';
-//   ctx.textBaseline = 'top';
-//   // ctx.globalCompositeOperation = 'destination-over'; //что-то на подобии з-индекса надо тестировать
-//   ctx.fillText('Score: ' + score, blockSize, blockSize);
-// };
-
-// add listener to disable scroll
 
 // ========border========
 
@@ -78,6 +70,13 @@ const drawBorder = () => {
 
 export const gameOver = () => {
   playing = false;
+  updateUserStats(score);
+  if (userGetTop(score)) {
+    // можно что-то показать
+  } else {
+    setStatsHTML();
+  }
+
   snake.setScore = 0;
   if (!playing) {
     Refs.startButton.removeAttribute('disabled', 'disabled');
@@ -142,6 +141,35 @@ const gameLoop = function () {
 };
 drawBorder();
 
+<<<<<<< HEAD
+=======
+//handlers
+const directionsMaker = e => {
+  const newDirection = directions[e.code];
+  if (newDirection !== undefined) {
+    console.log(snake);
+    snake.setDirection(newDirection);
+  }
+};
+
+const startBtnHandler = () => {
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sing in first');
+  }
+};
+
+const setNewMode = e => {
+  const mode = e.target.dataset.mode;
+  if (mode) {
+    console.log(mode);
+    localStorage.setItem('mode', mode);
+  }
+};
+
+>>>>>>> dev
 //listeners
 document.addEventListener('keydown', directionsMaker);
 Refs.startButton.addEventListener('click', startBtnHandler);

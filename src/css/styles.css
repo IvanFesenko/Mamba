@@ -206,6 +206,29 @@ input[type='radio'].visually-hidden {
   background-image: url('../images/medal_bronze.svg');
 }
 
+.logo-box {
+  width: 220px;
+  height: 385px;
+  position: relative;
+  padding-top: 40px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 40px;
+  text-align: center;
+  background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
+}
+
+.logo-box:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../images/noise.png');
+}
+
 .logo {
   position: relative;
   width: 300px;
@@ -213,22 +236,22 @@ input[type='radio'].visually-hidden {
 }
 
 .logo-title {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
   color: #00aeff;
   letter-spacing: 0.04em;
   line-height: 1;
   text-shadow: -1px -1px #000, 0 1px 0 #444;
   transition: all 1s;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .logo-text {
-  font-size: 14px;
+  font-size: 16px;
   color: #fff;
   letter-spacing: 0.04em;
-  text-shadow: 2px 2px 2px #000;
-  line-height: 1;
+  text-shadow: -1px -1px #000, 0 1px 0 #444;
+  line-height: 1.4;
 }
 
 .logo-text-img {
