@@ -40,8 +40,12 @@ const directionsMaker = e => {
 };
 
 const startBtnHandler = () => {
-  createNewSnake();
-  gameLoop();
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sign in first');
+  }
 };
 
 const setNewMode = e => {
