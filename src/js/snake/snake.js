@@ -4,6 +4,8 @@ import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
+//import { startButton, canvas, modeWrp } from './snakeRefs';
+import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
 
 const modeInputs = Refs.modeWrp.querySelectorAll('input');
@@ -43,6 +45,11 @@ const drawBorder = () => {
 
 export const gameOver = () => {
   playing = false;
+  updateUserStats(score);
+  if (userGetTop(score)) {
+    // можно что-то показать
+  }
+
   snake.setScore = 0;
   if (!playing) {
     Refs.startButton.removeAttribute('disabled', 'disabled');
@@ -115,8 +122,12 @@ const directionsMaker = e => {
 };
 
 const startBtnHandler = () => {
-  createNewSnake();
-  gameLoop();
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sing in first');
+  }
 };
 
 const setNewMode = e => {
