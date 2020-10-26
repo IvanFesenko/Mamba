@@ -91,6 +91,10 @@ async function addUserToDB({ user }, userName) {
   }
 }
 
+export function userLoggedIn() {
+  return firebase.auth().currentUser ? true : false;
+}
+
 function getCurrentUserID() {
   return firebase.auth().currentUser.uid;
 }
