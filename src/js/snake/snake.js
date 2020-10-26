@@ -52,6 +52,14 @@ const setNewMode = e => {
   }
 };
 
+const drawGameOver = () => {
+  ctx.font = '500 60px Arial';
+  ctx.fillStyle = '#fff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Game Over', width / 2, height / 2);
+};
+
 // ========border========
 
 const grd = ctx.createLinearGradient(0, 0, 170, 0);
@@ -70,6 +78,7 @@ const drawBorder = () => {
 
 export const gameOver = () => {
   playing = false;
+
   updateUserStats(score);
   if (userGetTop(score)) {
     // можно что-то показать
@@ -78,6 +87,7 @@ export const gameOver = () => {
   }
 
   snake.setScore = 0;
+
   if (!playing) {
     Refs.startButton.removeAttribute('disabled', 'disabled');
     // document.removeEventListener('keydown', directionsMaker);
@@ -87,11 +97,7 @@ export const gameOver = () => {
     window.removeEventListener('keydown', arrowKeysHandler, false);
   }
 
-  ctx.font = '500 60px Arial';
-  ctx.fillStyle = '#fff';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('Game Over', width / 2, height / 2);
+  drawGameOver();
 };
 
 //game mode
@@ -141,35 +147,6 @@ const gameLoop = function () {
 };
 drawBorder();
 
-<<<<<<< HEAD
-=======
-//handlers
-const directionsMaker = e => {
-  const newDirection = directions[e.code];
-  if (newDirection !== undefined) {
-    console.log(snake);
-    snake.setDirection(newDirection);
-  }
-};
-
-const startBtnHandler = () => {
-  if (userLoggedIn()) {
-    createNewSnake();
-    gameLoop();
-  } else {
-    alert('You need to sing in first');
-  }
-};
-
-const setNewMode = e => {
-  const mode = e.target.dataset.mode;
-  if (mode) {
-    console.log(mode);
-    localStorage.setItem('mode', mode);
-  }
-};
-
->>>>>>> dev
 //listeners
 document.addEventListener('keydown', directionsMaker);
 Refs.startButton.addEventListener('click', startBtnHandler);

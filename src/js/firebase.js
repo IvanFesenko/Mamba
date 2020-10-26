@@ -28,7 +28,6 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.singup.style.display = 'none';
     Refs.email.style.display = 'none';
     Refs.password.style.display = 'none';
-    Refs.game.style.display = 'block';
   } else {
     Refs.logout.style.display = 'none';
     Refs.login.style.display = 'inline';
@@ -36,7 +35,6 @@ firebase.auth().onAuthStateChanged(fbUser => {
     Refs.email.style.display = 'inline-block';
     Refs.password.style.display = 'inline-block';
     Refs.userName.style.display = 'inline-block';
-    Refs.game.style.display = 'none';
   }
 });
 
