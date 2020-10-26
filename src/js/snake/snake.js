@@ -17,7 +17,6 @@ let score = 0;
 
 //handlers
 const arrowKeysHandler = e => {
-  console.log('block');
   switch (e.code) {
     case 'ArrowLeft':
     case 'ArrowUp':
@@ -34,7 +33,6 @@ const arrowKeysHandler = e => {
 const directionsMaker = e => {
   const newDirection = directions[e.code];
   if (newDirection !== undefined) {
-    console.log(snake);
     snake.setDirection(newDirection);
   }
 };
@@ -51,7 +49,6 @@ const startBtnHandler = () => {
 const setNewMode = e => {
   const mode = e.target.dataset.mode;
   if (mode) {
-    console.log(mode);
     localStorage.setItem('mode', mode);
   }
 };
