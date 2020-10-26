@@ -16,31 +16,16 @@
       <div class="container">
         <nav class="header__nav">
           <a href="/" class="logo">
-            <img src="./images/gray_bottom.png" class="logo-img" alt="" />
-            <div class="img-wrap">
-              <img src="./images/logo.png" class="logo-text-img" alt="" />
-            </div>
-            <div class="logo-text-wrap">
-              <p class="logo-title">Mamba</p>
-              <!-- <p class="logo-descr">Achieve greatness!</p> -->
-            </div>
+            <img src="./images/logo.png" class="logo-text-img" alt="" />
+            <p class="logo-title">Mamba</p>
+            <p class="logo-text">Live in your world, play in ours</p>
           </a>
 
           <div class="main-content-wrap">
             <div class="sing-in-wrap">
-              <button class="btn button-game" type="button">
-                <span class="button-game-bg-left"></span>
-                <span class="button-game-bg-mid">
-                  <span>Sing in</span>
-                </span>
-                <span class="button-game-bg-right"></span>
-              </button>
-              <button class="btn button-game" type="button">
-                <span class="button-game-bg-left"></span>
-                <span class="button-game-bg-mid">
-                  <span>Sing up</span>
-                </span>
-                <span class="button-game-bg-right"></span>
+              <button class="auth-btn btn" type="button">Sing in</button>
+              <button class="auth-btn btn auth-btn-up" type="button">
+                Sing up
               </button>
             </div>
 
@@ -82,12 +67,8 @@
                   height="528"
                 ></canvas>
               </div>
-              <button class="btn button-game snake-start" type="button">
-                <span class="button-game-bg-left"></span>
-                <span class="button-game-bg-mid">
-                  <span>Start Game</span>
-                </span>
-                <span class="button-game-bg-right"></span>
+              <button type="button" class="auth-btn btn snake-start">
+                Start Game
               </button>
             </div>
           </div>
@@ -149,52 +130,60 @@
       </div>
     </header>
 
-    <main></main>
-
     <footer class="footer">
-      <div class="command">
-        <span class="material-icons icon">fingerprint</span>
-        <div class="command-text">
-          <span>FSDev</span>
-          <span>Entertainment</span>
+      <div class="container">
+        <div class="command">
+          <span class="material-icons icon">fingerprint</span>
+          <div class="command-text">
+            <span>FSDev</span>
+            <span>Entertainment</span>
+          </div>
         </div>
+        <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
+
+        <form action="#" class="form__registration">
+          <input
+            type="text"
+            id="inputUserName"
+            class="form__registration--control"
+            placeholder="User name *"
+            required=""
+            autofocus=""
+          />
+          <input
+            type="email"
+            id="inputEmail"
+            class="form__registration--control"
+            placeholder="Email address *"
+            required=""
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            class="form__registration--control"
+            placeholder="Password *"
+            required=""
+          />
+
+          <button class="btn btn-success btn-block" id="loginbtn" type="button">
+            Sign in
+          </button>
+          <button
+            class="btn btn-success btn-block"
+            id="logoutbtn"
+            type="button"
+          >
+            Logout
+          </button>
+          <button
+            class="btn btn-success btn-block"
+            id="singupbtn"
+            type="button"
+          >
+            Sign up
+          </button>
+        </form>
       </div>
-      <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
-
-      <form action="#" class="form__registration">
-        <input
-          type="text"
-          id="inputUserName"
-          class="form__registration--control"
-          placeholder="User name *"
-          required=""
-          autofocus=""
-        />
-        <input
-          type="email"
-          id="inputEmail"
-          class="form__registration--control"
-          placeholder="Email address *"
-          required=""
-        />
-        <input
-          type="password"
-          id="inputPassword"
-          class="form__registration--control"
-          placeholder="Password *"
-          required=""
-        />
-
-        <button class="btn btn-success btn-block" id="loginbtn" type="button">
-          Sign in
-        </button>
-        <button class="btn btn-success btn-block" id="logoutbtn" type="button">
-          Logout
-        </button>
-        <button class="btn btn-success btn-block" id="singupbtn" type="button">
-          Sign up
-        </button>
-      </form>
     </footer>
 
     <!-- SIGN UP MODAL -->
