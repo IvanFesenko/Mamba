@@ -26,21 +26,70 @@
             </div>
           </a>
 
-          <div class="sing-in-wrap">
-            <button class="btn button-game" type="button">
-              <span class="button-game-bg-left"></span>
-              <span class="button-game-bg-mid">
-                <span>Sing in</span>
-              </span>
-              <span class="button-game-bg-right"></span>
-            </button>
-            <button class="btn button-game" type="button">
-              <span class="button-game-bg-left"></span>
-              <span class="button-game-bg-mid">
-                <span>Sing up</span>
-              </span>
-              <span class="button-game-bg-right"></span>
-            </button>
+          <div class="main-content-wrap">
+            <div class="sing-in-wrap">
+              <button class="btn button-game" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Sing in</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
+              <button class="btn button-game" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Sing up</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
+            </div>
+
+            <div class="snake-wrp">
+              <div class="mode-wrp">
+                <div class="options">
+                  <div class="options__item">
+                    <input
+                      id="black-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="classic"
+                    />
+                    <label class="options__label" for="black-color"
+                      ><span>Classic</span></label
+                    >
+                  </div>
+
+                  <div class="options__item">
+                    <input
+                      id="white-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="ignoreWallsCollisionMode"
+                    />
+                    <label class="options__label" for="white-color"
+                      ><span>Arcade</span></label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="canvas-wrp">
+                <canvas
+                  class="canvas"
+                  id="canvas"
+                  width="528"
+                  height="528"
+                ></canvas>
+              </div>
+              <button class="btn button-game snake-start" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Start Game</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
+            </div>
           </div>
 
           <div class="top-players">
@@ -100,49 +149,7 @@
       </div>
     </header>
 
-    <main>
-      <div class="snake-wrp">
-        <div class="mode-wrp">
-          <div class="options">
-            <div class="options__item">
-              <input
-                id="black-color"
-                type="radio"
-                name="color"
-                class="options__input"
-                data-mode="classic"
-              />
-              <label class="options__label" for="black-color"
-                ><span>Classic</span></label
-              >
-            </div>
-
-            <div class="options__item">
-              <input
-                id="white-color"
-                type="radio"
-                name="color"
-                class="options__input"
-                data-mode="ignoreWallsCollisionMode"
-              />
-              <label class="options__label" for="white-color"
-                ><span>Arcade</span></label
-              >
-            </div>
-          </div>
-        </div>
-        <div class="canvas-wrp">
-          <canvas class="canvas" id="canvas" width="528" height="528"></canvas>
-        </div>
-        <button class="btn button-game snake-start" type="button">
-          <span class="button-game-bg-left"></span>
-          <span class="button-game-bg-mid">
-            <span>Start Game</span>
-          </span>
-          <span class="button-game-bg-right"></span>
-        </button>
-      </div>
-    </main>
+    <main></main>
 
     <footer class="footer">
       <div class="command">
