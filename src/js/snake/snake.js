@@ -4,7 +4,7 @@ import apple from './Apple';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import { startButton, canvas, modeWrp } from './snakeRefs';
-import { updateUserStats, userGetTop } from '../firebase';
+import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 
 import '../../css/snake.css';
 const modeInputs = modeWrp.querySelectorAll('input');
@@ -103,8 +103,12 @@ const directionsMaker = e => {
 };
 
 const startBtnHandler = () => {
-  createNewSnake();
-  gameLoop();
+  if (userLoggedIn()) {
+    createNewSnake();
+    gameLoop();
+  } else {
+    alert('You need to sing in first');
+  }
 };
 
 const setNewMode = e => {
