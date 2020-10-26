@@ -5,135 +5,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mamba - discover the predator in you</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="homepage">
-    <div class="wrapper">
-      <div class="head">
-          <form action="#" class="form__registration">
-            <input
-              type="text"
-              id="inputUserName"
-              class="form__registration--control"
-              placeholder="User name *"
-              required=""
-              autofocus=""
-            />
-            <input
-              type="email"
-              id="inputEmail"
-              class="form__registration--control"
-              placeholder="Email address *"
-              required=""
-            />
-            <input
-              type="password"
-              id="inputPassword"
-              class="form__registration--control"
-              placeholder="Password *"
-              required=""
-            />
+    <header class="header">
+      <div class="container">
+        <nav class="header__nav">
+          <a href="/" class="logo">
+            <img src="./images/gray_bottom.png" class="logo-img" alt="" />
+            <div class="img-wrap">
+              <img src="./images/logo.png" class="logo-text-img" alt="" />
+            </div>
+            <div class="logo-text-wrap">
+              <p class="logo-title">Mamba</p>
+              <!-- <p class="logo-descr">Achieve greatness!</p> -->
+            </div>
+          </a>
 
-            <button
-              class="btn btn-success btn-block"
-              id="loginbtn"
-              type="button"
-            >
-              Sign in
-            </button>
-            <button
-              class="btn btn-success btn-block"
-              id="logoutbtn"
-              type="button"
-            >
-              Logout
-            </button>
-            <button
-              class="btn btn-success btn-block"
-              id="singupbtn"
-              type="button"
-            >
-              Sign up
-            </button>
-          </form>
-          <nav class="navigation">
+          <div class="main-content-wrap">
             <div class="sing-in-wrap">
-              <a class="btn button-game" type="button">
+              <button class="btn button-game" type="button">
                 <span class="button-game-bg-left"></span>
                 <span class="button-game-bg-mid">
-                  <span>Sing-in</span>
+                  <span>Sing in</span>
                 </span>
                 <span class="button-game-bg-right"></span>
-              </a>
-            </div>
-            <div class="avatar-frame">
-              <span class="no-avatar"></span>
-              <span class="border"></span>
-            </div>
-          </nav>
-      </div>
-
-      <div class="snake-wrp">
-        <h1 class="snake-title">The Snake</h1>
-        <div class="mode-wrp">
-          <div class="options">
-            <div class="options__item">
-              <input
-                id="black-color"
-                type="radio"
-                name="color"
-                class="options__input"
-                data-mode="classic"
-              />
-              <label class="options__label" for="black-color"
-                ><span>Classic</span></label
-              >
+              </button>
+              <button class="btn button-game" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Sing up</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
             </div>
 
-            <div class="options__item">
-              <input
-                id="white-color"
-                type="radio"
-                name="color"
-                class="options__input"
-                data-mode="ignoreWallsCollisionMode"
-              />
-              <label class="options__label" for="white-color"
-                ><span>Arcade</span></label
-              >
-            </div>
-          </div>
-        </div>
-        <div class="canvas-wrp">
-          <canvas class="canvas" id="canvas" width="528" height="528"></canvas>
-        </div>
-        <button class="snake-start">start game</button>
-      </div>
-      <div class="body">
-        <div class="body-top">
-          <div class="body-bot">
-            <div class="home-banner-section">
-              <div class="home-banner">
-                <div class="stat-wrap">
-                  <h2 class="stat__title">Best players</h2>
-                  <ul class="players-list">
-                    <li class="player">Maximus - 324 points</li>
-                    <li class="player">IvanPower - 302 points</li>
-                    <li class="player">NikitosBarbarian - 289 points</li>
-                    <li class="player">Barmaley - 288 points</li>
-                    <li class="player">Kolyamba - 124 point</li>
-                  </ul>
+            <div class="snake-wrp">
+              <div class="mode-wrp">
+                <div class="options">
+                  <div class="options__item">
+                    <input
+                      id="black-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="classic"
+                    />
+                    <label class="options__label" for="black-color"
+                      ><span>Classic</span></label
+                    >
+                  </div>
+
+                  <div class="options__item">
+                    <input
+                      id="white-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="ignoreWallsCollisionMode"
+                    />
+                    <label class="options__label" for="white-color"
+                      ><span>Arcade</span></label
+                    >
+                  </div>
                 </div>
               </div>
+              <div class="canvas-wrp">
+                <canvas
+                  class="canvas"
+                  id="canvas"
+                  width="528"
+                  height="528"
+                ></canvas>
+              </div>
+              <button class="btn button-game snake-start" type="button">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                  <span>Start Game</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+              </button>
             </div>
-            <div class="chat-gem-container"></div>
           </div>
-        </div>
-        <div class="body-trail"></div>
-      </div>
 
-      <footer class="footer"></footer>
-    </div>
+          <div class="top-players">
+            <h2 class="top__title"><span>TOP-10</span> players</h2>
+            <ul class="players-list">
+              <li class="player bg-place">
+                <span class="players-number pn-one">1</span>
+                Maximus - 324 points
+              </li>
+              <li class="player bg-place">
+                <span class="players-number pn-two">2</span>
+                IvanPower - 302 points
+              </li>
+              <li class="player bg-place">
+                <span class="players-number pn-three">3</span>
+                NikitosBarbarian - 289 points
+              </li>
+              <li class="player">
+                <span class="players-number">4</span>
+                4. Barmaley - 288 points
+              </li>
+              <li class="player">
+                <span class="players-number">5</span>
+                Kolyamba - 124 point
+              </li>
+              <li class="player">
+                <span class="players-number">6</span>
+                Maximus - 324 points
+              </li>
+              <li class="player">
+                <span class="players-number">7</span>
+                IvanPower - 302 points
+              </li>
+              <li class="player">
+                <span class="players-number">8</span>
+                NikitosBarbarian - 289 points
+              </li>
+              <li class="player">
+                <span class="players-number">9</span>
+                Barmaley - 288 points
+              </li>
+              <li class="player">
+                <span class="players-number">10</span>
+                Kolyamba - 124 point
+              </li>
+            </ul>
+          </div>
+
+          <div class="header__button-wrap is-hidden">
+            <div class="header__burger" id="burger">
+              <span></span>
+            </div>
+          </div>
+        </nav>
+
+        <div class="ofer"></div>
+      </div>
+    </header>
+
+    <main></main>
+
+    <footer class="footer">
+      <div class="command">
+        <span class="material-icons icon">fingerprint</span>
+        <div class="command-text">
+          <span>FSDev</span>
+          <span>Entertainment</span>
+        </div>
+      </div>
+      <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
+
+      <form action="#" class="form__registration">
+        <input
+          type="text"
+          id="inputUserName"
+          class="form__registration--control"
+          placeholder="User name *"
+          required=""
+          autofocus=""
+        />
+        <input
+          type="email"
+          id="inputEmail"
+          class="form__registration--control"
+          placeholder="Email address *"
+          required=""
+        />
+        <input
+          type="password"
+          id="inputPassword"
+          class="form__registration--control"
+          placeholder="Password *"
+          required=""
+        />
+
+        <button class="btn btn-success btn-block" id="loginbtn" type="button">
+          Sign in
+        </button>
+        <button class="btn btn-success btn-block" id="logoutbtn" type="button">
+          Logout
+        </button>
+        <button class="btn btn-success btn-block" id="singupbtn" type="button">
+          Sign up
+        </button>
+      </form>
+    </footer>
 
     <!-- SIGN UP MODAL -->
     <!-- <div id="modal-signup" class="modal">

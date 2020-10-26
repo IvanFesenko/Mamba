@@ -19,8 +19,6 @@ body {
 .snake-start {
   cursor: pointer;
   display: block;
-  border: 1px solid gold;
-  width: 200px;
   margin: 0 auto;
   background-color: transparent;
   color: gold;
