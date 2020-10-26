@@ -6,7 +6,6 @@ import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
 //import { startButton, canvas, modeWrp } from './snakeRefs';
 import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
-import {setStatsHTML} from '../stats';
 import '../../css/snake.css';
 
 const modeInputs = Refs.modeWrp.querySelectorAll('input');
@@ -51,8 +50,6 @@ export const gameOver = () => {
   if (userGetTop(score)) {
     // можно что-то показать
   }
-
-  setStatsHTML();
 
   snake.setScore = 0;
   if (!playing) {

@@ -1,6 +1,8 @@
 import {getTopStats, getUserStats} from './firebase';
 import refs from './refs';
 
+setStatsHTML();
+
 export async function setStatsHTML() {  
     const data = await getTopStats();
     const statsHTML = `
@@ -47,3 +49,4 @@ export async function setStatsHTML() {
 `;
 refs.topList.innerHTML = statsHTML;
 }
+
