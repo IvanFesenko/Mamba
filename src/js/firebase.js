@@ -158,10 +158,9 @@ export async function updateUserStats(newScore) {
 async function updateTopStats(newStats, mode) {
   const db = firebase.database();
   const stats = db.ref(`/TOP10/${mode}`);
-  const uniqStats = getUniStatsList(newStats);
-  const sortedStats = getSortedTopList(uniqStats);
-  console.log(sortedStats);
-  stats.set(sortedStats);
+  const sortedStats = getSortedTopList(newStats);
+  const uniqStats = getUniStatsList(sortedStats);
+  stats.set(uniqStats);
 }
 
 export async function getTopStats(mode) {
