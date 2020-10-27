@@ -1,0 +1,101 @@
+$speed: 4s;
+
+html {
+  background: #000000;
+}
+pattern path {
+  stroke: #000000;
+}
+.snake-group {
+  stroke: #33d9de;
+}
+
+.preloader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  z-index: 1000;
+
+  &__svg {
+    position: absolute;
+    width: 200px;
+  }
+}
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
+
+.snake {
+  animation: stroke-anim $speed linear infinite;
+}
+@keyframes stroke-anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Values generated from JS */
+.snake {
+  stroke-dasharray: 32 224;
+  stroke-dashoffset: 256;
+  animation-timing-function: steps(32);
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+
+.dot {
+  animation: dot1 $speed steps(1) infinite;
+}
+@keyframes dot1 {
+  0%,
+  26%,
+  91.1% {
+    opacity: 1;
+  }
+  26.1%,
+  91% {
+    opacity: 0;
+  }
+}
+
+.dot-2 {
+  animation-name: dot2;
+}
+@keyframes dot2 {
+  0%,
+  26%,
+  51%,
+  100% {
+    opacity: 0;
+  }
+  26.1%,
+  50% {
+    opacity: 1;
+  }
+}
+
+.dot-3 {
+  animation-name: dot3;
+}
+@keyframes dot3 {
+  0%,
+  50%,
+  92%,
+  100% {
+    opacity: 0;
+  }
+  50.1%,
+  92% {
+    opacity: 1;
+  }
+}
