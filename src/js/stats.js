@@ -1,10 +1,12 @@
 import { getTopStats, getUserStats } from './firebase';
 import refs from './refs';
+import { getGameMode } from './snake/modes';
 
 setStatsHTML();
 
 export async function setStatsHTML() {
-  const data = await getTopStats();
+  const mode = getGameMode();
+  const data = await getTopStats(mode);
   const statsHTML = data.map((e, i) => {
     if (i === 0) {
       return `<li class="player bg-place"><span class="players-number pn-one">${
