@@ -1,0 +1,57 @@
+.auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms linear;
+  z-index: 10000;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.9);
+    transition: transform 200ms ease-in-out;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    transition: background-color 200ms ease-in-out;
+    outline: none;
+
+    width: 48px;
+    height: 48px;
+
+    background-image: url('../images/svg/icon-close.svg');
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+}
+
+.auth-modal.is-open {
+  opacity: 1;
+  pointer-events: initial;
+}
