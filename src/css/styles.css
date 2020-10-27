@@ -105,6 +105,7 @@ input[type='radio'].visually-hidden {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-top: 40px;
 }
 
 .top-players {
@@ -113,7 +114,6 @@ input[type='radio'].visually-hidden {
   color: #fff;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 40px;
   background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
 }
 
@@ -214,7 +214,6 @@ input[type='radio'].visually-hidden {
   color: #fff;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 40px;
   text-align: center;
   background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
 }

@@ -11,7 +11,7 @@ export function onCloseModal() {
   window.removeEventListener('keydown', onPressEsc);
 }
 
-function onPressEsc() {
+function onPressEsc(event) {
   if (event.key === 'Escape') {
     onCloseModal();
   }
@@ -24,7 +24,6 @@ function onClickBackDrop(event) {
 }
 
 refs.openModal.addEventListener('click', event => {
-  console.dir(event.target);
   if (
     event.target.dataset.type !== 'logout' &&
     event.target.nodeName === 'BUTTON'
