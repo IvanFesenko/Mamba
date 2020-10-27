@@ -1,5 +1,6 @@
 import Refs from './refs';
 import { setStatsHTML } from './stats';
+import { getGameMode } from './snake/modes';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -86,7 +87,9 @@ async function addUserToDB({ user }, userName) {
     const userNames = db.ref('userNames');
     userNames.push(userName);
     users.child(uid).set({ email: email, userName: userName });
-    stats.child(uid).set({ total: 0, maxScore: 0 });
+    stats.child(`${uid}/classic`).set({ total: 0, maxScore: 0 });
+    stats.child(`${uid}/arcade`).set({ total: 0, maxScore: 0 });
+    stats.child(`${uid}/total`).set(0);
   } catch {
     console.error('user add failed');
   }
@@ -132,19 +135,64 @@ export async function getUserStats() {
 export async function updateUserStats(newScore) {
   const userID = getCurrentUserID();
   const stats = await getUserStats();
+  const mode = getGameMode();
   stats.total += 1;
-  if (stats.maxScore < newScore) {
-    stats.maxScore = newScore;
+
+  if (mode === 'classic') {
+    if (stats.classic.maxScore < newScore) {
+      stats.classic.maxScore = newScore;
+      stats.classic.total += 1;
+    }
+  }
+  if (mode === 'arcade') {
+    if (stats.arcade.maxScore < newScore) {
+      stats.arcade.maxScore = newScore;
+      stats.arcade.total += 1;
+    }
   }
   const db = firebase.database();
   const Stats = db.ref(`/stats/${userID}`);
   Stats.set(stats);
 }
 
-async function updateTopStats(newStats) {
+async function updateTopStats(newStats, mode) {
+  const db = firebase.database();
+  const stats = db.ref(`/TOP10/${mode}`);
+  const uniqStats = getUniStatsList(newStats);
+  const sortedStats = getSortedTopList(uniqStats);
+  console.log(sortedStats);
+  stats.set(sortedStats);
+}
+
+export async function getTopStats(mode) {
+  const db = firebase.database();
+  const topStats = db.ref(`/TOP10/${mode}`);
+  const dataSnapshot = await topStats.once('value');
+  return dataSnapshot.val();
+}
+
+export async function userGetTop(score) {
+  const mode = getGameMode();
+  const topStats = await getTopStats(mode);
+  const minScore = topStats[topStats.length - 1];
+  if (topStats.length < 10 || score > minScore.score) {
+    const name = await getUserName();
+    if (minScore < 10) {
+      topStats[topStats.length] = { name, score };
+    } else {
+      topStats[topStats.length - 1] = { name, score };
+    }
+    await updateTopStats(topStats, mode);
+    setStatsHTML();
+    return true;
+  }
+  return false;
+}
+
+function getUniStatsList(list) {
   const uniqStats = [];
   const map = new Map();
-  for (const item of newStats) {
+  for (const item of list) {
     if (!map.has(item.name)) {
       map.set(item.name, true);
       uniqStats.push({
@@ -153,32 +201,7 @@ async function updateTopStats(newStats) {
       });
     }
   }
-
-  const db = firebase.database();
-  const stats = db.ref('TOP10');
-  const sortedStats = getSortedTopList(uniqStats);
-  console.log(sortedStats);
-  stats.set(sortedStats);
-}
-
-export async function getTopStats() {
-  const db = firebase.database();
-  const topStats = db.ref('TOP10');
-  const dataSnapshot = await topStats.once('value');
-  return dataSnapshot.val();
-}
-
-export async function userGetTop(score) {
-  const topStats = await getTopStats();
-  const minScore = topStats[topStats.length - 1];
-  if (score > minScore.score) {
-    const name = await getUserName();
-    topStats[topStats.length - 1] = { name, score };
-    await updateTopStats(topStats);
-    setStatsHTML();
-    return true;
-  }
-  return false;
+  return uniqStats;
 }
 
 function getSortedTopList(list) {
