@@ -177,7 +177,7 @@ export async function userGetTop(score) {
   const minScore = topStats[topStats.length - 1];
   if (topStats.length < 10 || score > minScore.score) {
     const name = await getUserName();
-    if (minScore < 10) {
+    if (topStats.length < 10) {
       topStats[topStats.length] = { name, score };
     } else {
       topStats[topStats.length - 1] = { name, score };

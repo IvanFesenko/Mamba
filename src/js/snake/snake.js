@@ -51,6 +51,7 @@ const setNewMode = e => {
   if (mode) {
     localStorage.setItem('mode', mode);
   }
+  setStatsHTML();
 };
 
 const drawGameOver = () => {
