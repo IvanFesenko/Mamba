@@ -11,6 +11,12 @@ const Refs = {
   snakeScore: document.querySelector('.snake-score'),
   topList: document.querySelector('.players-list'),
   game: document.querySelector('.snake-wrp'),
+
+  //auth-modal
+  authModal: document.getElementById('auth-modal'),
+  authModalOverlay: document.getElementById('auth-modal-overlay'),
+  openModal: document.querySelector('.sing-in-wrap'),
+  closeModalBtn: document.getElementById('close-auth-modal'),
 };
 
 export default Refs;
