@@ -2,7 +2,6 @@ import { getTopStats, getUserStats } from './firebase';
 import refs from './refs';
 import { getGameMode } from './snake/modes';
 
-
 export async function setStatsHTML() {
   const mode = getGameMode();
   const data = await getTopStats(mode);
