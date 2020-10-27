@@ -24,6 +24,6 @@ export async function setStatsHTML() {
       } - ${e.score} points </li>`;
     }
   });
-  console.log(statsHTML);
+  
   refs.topList.innerHTML = statsHTML.join(' ');
 }

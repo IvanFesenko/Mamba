@@ -23,16 +23,10 @@ firebase.initializeApp({
 
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
-  const signInBtn = document.querySelector('.btn[data-type="signin"]');
-  const signUpBtn = document.querySelector('.btn[data-type="signup"]');
   if (fbUser) {
-    signInBtn.style.display = 'none';
-    signUpBtn.style.display = 'none';
-    Refs.logout.style.display = 'inline';
+    showLogoutBtn();
   } else {
-    signInBtn.style.display = 'inline';
-    signUpBtn.style.display = 'inline';
-    Refs.logout.style.display = 'none';
+    hideLogoutBtn();
   }
 });
 
@@ -204,4 +198,16 @@ function getUniStatsList(list) {
 
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
+}
+
+function showLogoutBtn() {
+  Refs.mainSignInBtn.style.display = 'none';
+  Refs.mainSignUpBtn.style.display = 'none';
+  Refs.logout.style.display = 'inline';
+}
+
+function hideLogoutBtn() {
+  Refs.mainSignInBtn.style.display = 'inline';
+  Refs.mainSignUpBtn.style.display = 'inline';
+  Refs.logout.style.display = 'none';
 }

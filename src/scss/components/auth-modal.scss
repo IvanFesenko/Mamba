@@ -18,7 +18,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
   }
 
   &__content {
@@ -32,7 +32,8 @@
     transform: scale(0.9);
     transition: transform 200ms ease-in-out;
     border-radius: 30px;
-    background-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%),
+
+    background: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%),
       linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
   }
 
