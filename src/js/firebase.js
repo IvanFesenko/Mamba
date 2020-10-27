@@ -1,6 +1,7 @@
 import Refs from './refs';
 import { setStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
+import { onCloseModal } from './auth-modal';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -22,20 +23,16 @@ firebase.initializeApp({
 
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
+  const signInBtn = document.querySelector('.btn[data-type="signin"]');
+  const signUpBtn = document.querySelector('.btn[data-type="signup"]');
   if (fbUser) {
+    signInBtn.style.display = 'none';
+    signUpBtn.style.display = 'none';
     Refs.logout.style.display = 'inline';
-    Refs.login.style.display = 'none';
-    Refs.userName.style.display = 'none';
-    Refs.singup.style.display = 'none';
-    Refs.email.style.display = 'none';
-    Refs.password.style.display = 'none';
   } else {
+    signInBtn.style.display = 'inline';
+    signUpBtn.style.display = 'inline';
     Refs.logout.style.display = 'none';
-    Refs.login.style.display = 'inline';
-    Refs.singup.style.display = 'inline';
-    Refs.email.style.display = 'inline-block';
-    Refs.password.style.display = 'inline-block';
-    Refs.userName.style.display = 'inline-block';
   }
 });
 
@@ -47,6 +44,7 @@ async function authorization(e) {
       Refs.email.value,
       Refs.password.value,
     );
+    onCloseModal();
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -70,6 +68,7 @@ async function singUp(e) {
         Refs.password.value,
       );
       await addUserToDB(user, userName);
+      onCloseModal();
     } else {
       alert('Username already exists');
     }

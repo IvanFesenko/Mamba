@@ -1,5 +1,5 @@
 import './css/styles.css';
-import './scss/base.scss';
+import './scss/main.scss';
 
 //
 
@@ -7,6 +7,7 @@ import './scss/base.scss';
 
 import './js/script.js';
 import './js/snake/snake.js';
+import './js/auth-modal.js';
 
 // setup materialize components
 // document.addEventListener('DOMContentLoaded', function () {

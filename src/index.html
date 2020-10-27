@@ -16,15 +16,35 @@
       <div class="container">
         <nav class="header__nav">
           <div class="logo-box">
-            <img src="./images/logo.png" class="logo-text-img" alt="" />
+            <img src="./images/logo.png" class="logo-text-img" alt="logo" />
             <p class="logo-title">Mamba</p>
             <p class="logo-text">Live in your world, play in ours</p>
           </div>
 
           <div class="main-content-wrap">
             <div class="sing-in-wrap">
-              <button class="auth-btn btn" type="button">Sing in</button>
-              <button class="auth-btn btn auth-btn-up" type="button">
+              <button
+                class="auth-btn btn js-auth-modal__open"
+                type="button"
+                data-type="signin"
+              >
+                Sing in
+              </button>
+
+              <button
+                class="auth-btn btn"
+                type="button"
+                data-type="logout"
+                id="logoutbtn"
+              >
+                Logout
+              </button>
+
+              <button
+                class="auth-btn btn auth-btn-up js-auth-modal__open"
+                type="button"
+                data-type="signup"
+              >
                 Sing up
               </button>
             </div>
@@ -101,48 +121,55 @@
         </div>
         <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
 
-        <form action="#" class="form__registration">
-          <input
-            type="text"
-            id="inputUserName"
-            class="form__registration--control"
-            placeholder="User name *"
-            required=""
-            autofocus=""
-          />
-          <input
-            type="email"
-            id="inputEmail"
-            class="form__registration--control"
-            placeholder="Email address *"
-            required=""
-          />
-          <input
-            type="password"
-            id="inputPassword"
-            class="form__registration--control"
-            placeholder="Password *"
-            required=""
-          />
+        <div class="auth-modal" id="auth-modal">
+          <div class="auth-modal__overlay" id="auth-modal-overlay"></div>
+          <div class="auth-modal__content js-auth-modal__content">
+            <div class="auth-modal__content--wrapper">
+              <button class="auth-modal__close" id="close-auth-modal"></button>
+              <form action="#" class="form__registration">
+                <input
+                  type="text"
+                  id="inputUserName"
+                  class="form__registration--control"
+                  placeholder="User name *"
+                  required=""
+                  autofocus=""
+                  maxlength="15"
+                />
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form__registration--control"
+                  placeholder="Email address *"
+                  required=""
+                />
+                <input
+                  type="password"
+                  id="inputPassword"
+                  class="form__registration--control"
+                  placeholder="Password *"
+                  required=""
+                />
 
-          <button class="btn btn-success btn-block" id="loginbtn" type="button">
-            Sign in
-          </button>
-          <button
-            class="btn btn-success btn-block"
-            id="logoutbtn"
-            type="button"
-          >
-            Logout
-          </button>
-          <button
-            class="btn btn-success btn-block"
-            id="singupbtn"
-            type="button"
-          >
-            Sign up
-          </button>
-        </form>
+                <button
+                  class="btn btn-success btn-block auth-btn"
+                  id="loginbtn"
+                  type="button"
+                >
+                  Sign in
+                </button>
+
+                <button
+                  class="btn btn-success btn-block auth-btn"
+                  id="singupbtn"
+                  type="button"
+                >
+                  Sign up
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
 
