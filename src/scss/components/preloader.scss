@@ -21,18 +21,20 @@ pattern path {
   z-index: 1000;
 
   &__svg {
-    position: absolute;
     width: 200px;
   }
 }
 
-.loaded_hiding .preloader {
-  transition: 0.3s opacity;
-  opacity: 0;
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
 }
 
-.loaded .preloader {
-  display: none;
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 
 .snake {
@@ -44,56 +46,26 @@ pattern path {
   }
 }
 
-/* Values generated from JS */
 .snake {
   stroke-dasharray: 32 224;
   stroke-dashoffset: 256;
   animation-timing-function: steps(32);
 }
 
-/* ////////////////////////////////////////////////////////////////////////// */
-
 .dot {
-  animation: dot1 $speed steps(1) infinite;
-}
-@keyframes dot1 {
-  0%,
-  26%,
-  91.1% {
-    opacity: 1;
-  }
-  26.1%,
-  91% {
-    opacity: 0;
-  }
-}
-
-.dot-2 {
-  animation-name: dot2;
-}
-@keyframes dot2 {
-  0%,
-  26%,
-  51%,
-  100% {
-    opacity: 0;
-  }
-  26.1%,
-  50% {
-    opacity: 1;
-  }
+  animation: dot3 $speed steps(1) infinite;
 }
 
 .dot-3 {
   animation-name: dot3;
 }
 @keyframes dot3 {
-  0%,
-  50%,
-  92%,
-  100% {
+  0% {
     opacity: 0;
   }
+  5%,
+  10%,
+  25%,
   50.1%,
   92% {
     opacity: 1;
