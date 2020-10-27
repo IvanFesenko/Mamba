@@ -1,6 +1,7 @@
 import Snake from './SnakeClass';
 import directions from './directions';
 import apple from './Apple';
+import barrier from './Barrier';
 import { MODE_CLASSIC } from './modes';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
