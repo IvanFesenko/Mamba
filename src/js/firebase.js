@@ -6,7 +6,7 @@ import 'firebase/auth';
 import 'firebase/database';
 
 Refs.login.addEventListener('click', authorization);
-Refs.logout.addEventListener('click', logOut);
+// Refs.logout.addEventListener('click', logOut);
 Refs.singup.addEventListener('click', singUp);
 
 firebase.initializeApp({
