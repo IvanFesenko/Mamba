@@ -5,7 +5,7 @@ function loadData() {
 }
 
 loadData().then(() => {
-  const body = document.querySelector('body');
+  const body = document.querySelector('.homepage');
   const preloader = document.getElementById('preloader');
 
   preloader.classList.add('hidden');
