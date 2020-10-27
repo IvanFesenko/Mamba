@@ -75,21 +75,6 @@
   }
 }
 
-// input[type='email'] {
-//   width: 300px;
-//   height: 40px;
-//   border: #008080 2px solid;
-//   border-radius: 10px;
-//   background-color: rgb(230, 230, 230);
-//   margin-bottom: 30px;
-// }
-
-// input[type='password'] {
-//   background-color: rgb(230, 230, 230);
-//   margin-bottom: 30px;
-// }
-
-// input[type='text'] {
-//   background-color: rgb(230, 230, 230);
-//   margin-bottom: 30px;
-// }
+input[type='email']:invalid {
+  color: #ff0000;
+}
