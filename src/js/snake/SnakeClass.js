@@ -145,8 +145,6 @@ class Snake {
         );
       }
     }
-
-    // return wallCollision || selfCollision; // if snake has dtp wit wall or herself
   }
 
   setDirection(newDirection) {
