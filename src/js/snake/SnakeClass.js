@@ -4,8 +4,6 @@ import { gameOver } from './snake';
 import { MODE_CLASSIC, MODE_IGNORE_WALLS_COLLISION } from './modes';
 import { widthInBlocks, heightInBlocks } from './blockSizes';
 
-// export let animationTime = 100;
-
 class Snake {
   constructor(mode = MODE_CLASSIC) {
     this.segments = [new Block(7, 5), new Block(6, 5), new Block(5, 5)];
@@ -33,8 +31,6 @@ class Snake {
   }
 
   draw() {
-    // this.segments.forEach((element) => element.drawSquare("blue"));
-
     let isEvenSegment = false;
     for (let i = 0; i < this.segments.length; i += 1) {
       if (isEvenSegment) {
@@ -120,7 +116,6 @@ class Snake {
   }
 
   checkCollision(head) {
-    console.log(this.score);
     const leftCollision = head.col === 0;
     const topCollision = head.row === 0;
     const rightCollision = head.col === widthInBlocks - 1;
@@ -134,7 +129,7 @@ class Snake {
         selfCollision = true;
       }
     });
-    console.log(this.mode);
+
     if (this.mode !== null && this.mode) {
       if (this.mode === MODE_CLASSIC) {
         return this.classicMode(wallCollision, selfCollision);

@@ -17,7 +17,6 @@ let score = 0;
 
 //handlers
 const arrowKeysHandler = e => {
-  console.log('block');
   switch (e.code) {
     case 'ArrowLeft':
     case 'ArrowUp':
@@ -34,7 +33,6 @@ const arrowKeysHandler = e => {
 const directionsMaker = e => {
   const newDirection = directions[e.code];
   if (newDirection !== undefined) {
-    console.log(snake);
     snake.setDirection(newDirection);
   }
 };
@@ -51,7 +49,6 @@ const startBtnHandler = () => {
 const setNewMode = e => {
   const mode = e.target.dataset.mode;
   if (mode) {
-    console.log(mode);
     localStorage.setItem('mode', mode);
   }
 };
@@ -94,7 +91,7 @@ export const gameOver = () => {
 
   if (!playing) {
     Refs.startButton.removeAttribute('disabled', 'disabled');
-    // document.removeEventListener('keydown', directionsMaker);
+    document.removeEventListener('keydown', directionsMaker);
     modeInputs.forEach(e => {
       e.removeAttribute('disabled', 'disabled');
     });
@@ -147,11 +144,11 @@ const gameLoop = function () {
       e.setAttribute('disabled', 'disabled');
     });
     window.addEventListener('keydown', arrowKeysHandler, false);
+    document.addEventListener('keydown', directionsMaker);
   }
 };
 drawBorder();
 
 //listeners
-document.addEventListener('keydown', directionsMaker);
 Refs.startButton.addEventListener('click', startBtnHandler);
 Refs.modeWrp.addEventListener('click', setNewMode);

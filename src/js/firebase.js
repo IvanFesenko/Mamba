@@ -142,9 +142,22 @@ export async function updateUserStats(newScore) {
 }
 
 async function updateTopStats(newStats) {
+  const uniqStats = [];
+  const map = new Map();
+  for (const item of newStats) {
+    if (!map.has(item.name)) {
+      map.set(item.name, true);
+      uniqStats.push({
+        name: item.name,
+        score: item.score,
+      });
+    }
+  }
+
   const db = firebase.database();
   const stats = db.ref('TOP10');
-  const sortedStats = getSortedTopList(newStats);
+  const sortedStats = getSortedTopList(uniqStats);
+  console.log(sortedStats);
   stats.set(sortedStats);
 }
 

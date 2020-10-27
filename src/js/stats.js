@@ -1,52 +1,28 @@
-import {getTopStats, getUserStats} from './firebase';
+import { getTopStats, getUserStats } from './firebase';
 import refs from './refs';
 
 setStatsHTML();
 
-export async function setStatsHTML() {  
-    const data = await getTopStats();
-    const statsHTML = `
-              <li class="player bg-place">
-                <span class="players-number pn-one">1</span>
-                ${data[0].name} - ${data[0].score} points
-              </li>
-              <li class="player bg-place">
-                <span class="players-number pn-two">2</span>
-                ${data[1].name} - ${data[1].score} points
-              </li>
-              <li class="player bg-place">
-                <span class="players-number pn-three">3</span>
-                ${data[2].name} - ${data[2].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">4</span>
-                ${data[3].name} - ${data[3].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">5</span>
-                ${data[4].name} - ${data[4].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">6</span>
-                ${data[5].name} - ${data[5].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">7</span>
-                ${data[6].name} - ${data[6].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">8</span>
-                ${data[7].name} - ${data[7].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">9</span>
-                ${data[8].name} - ${data[8].score} points
-              </li>
-              <li class="player">
-                <span class="players-number">10</span>
-                ${data[9].name} - ${data[9].score} points
-              </li>
-`;
-refs.topList.innerHTML = statsHTML;
+export async function setStatsHTML() {
+  const data = await getTopStats();
+  const statsHTML = data.map((e, i) => {
+    if (i === 0) {
+      return `<li class="player bg-place"><span class="players-number pn-one">${
+        i + 1
+      }</span>${e.name} - ${e.score} points</li>`;
+    } else if (i === 1) {
+      return `<li class="player bg-place"><span class="players-number pn-two">${
+        i + 1
+      }</span>${e.name} - ${e.score} points</li>`;
+    } else if (i === 2) {
+      return `<li class="player bg-place"><span class="players-number pn-three">${
+        i + 1
+      }</span>${e.name} - ${e.score} points</li>`;
+    } else {
+      return `<li class="player"><span class="players-number">${i + 1}</span>${
+        e.name
+      } - ${e.score} points </li>`;
+    }
+  });
+  refs.topList.innerHTML = statsHTML.join(' ');
 }
-
