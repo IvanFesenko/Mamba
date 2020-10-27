@@ -70,12 +70,23 @@ class Snake {
     if (newHead.equal(apple.position)) {
       this.score += 1;
 
-      //нужно добавить проверку на аниматион тайм меньше 1
       if (this.animationTime >= 3) {
         if (this.mode === MODE_CLASSIC) {
-          this.animationTime -= 2;
+          this.score > 20
+            ? (this.animationTime -= 1)
+            : (this.animationTime -= 2);
         } else if (this.mode === MODE_IGNORE_WALLS_COLLISION) {
-          this.animationTime -= 3;
+          if (this.score < 10) {
+            this.animationTime -= 3;
+          } else if (this.score > 10 && this.score < 28) {
+            this.animationTime -= 2;
+          } else if (this.score > 28 && this.score < 40) {
+            this.animationTime -= 1;
+          } else if (this.score > 40) {
+            this.animationTime -= 0.5;
+          } else if (this.score > 50) {
+            this.animationTime = this.animationTime;
+          }
         }
       } else if (this.animationTime === 1 || this.animationTime === 0) {
         this.animationTime = 1;
