@@ -6,7 +6,7 @@ function onOpenAuthModal() {
   window.addEventListener('keydown', onPressEsc);
 }
 
-function onCloseModal() {
+export function onCloseModal() {
   refs.authModal.classList.remove('is-open');
   window.removeEventListener('keydown', onPressEsc);
 }
@@ -23,18 +23,6 @@ function onClickBackDrop(event) {
   }
 }
 
-// function createAuthForm() {
-//   const modalForm = refs.authForm.cloneNode(true);
-//   refs.authForm.remove();
-//   refs.authModalContent.appendChild(modalForm);
-// }
-
-// function returnAuthForm() {
-//   const modalForm = refs.authForm.cloneNode(true);
-//   refs.authForm.remove();
-//   refs.head.prepend(modalForm);
-// }
-
 refs.openModal.addEventListener('click', event => {
   console.dir(event.target);
   if (
@@ -46,18 +34,18 @@ refs.openModal.addEventListener('click', event => {
 
   if (event.target.dataset.type === 'signin') {
     refs.userName.style.display = 'none';
-    refs.email.style.display = 'inline-block';
-    refs.password.style.display = 'inline-block';
-    refs.login.style.display = 'inline';
+    refs.email.style.display = 'block';
+    refs.password.style.display = 'block';
+    refs.login.style.display = 'block';
     refs.singup.style.display = 'none';
   }
 
   if (event.target.dataset.type === 'signup') {
-    refs.userName.style.display = 'inline';
-    refs.email.style.display = 'inline-block';
-    refs.password.style.display = 'inline-block';
+    refs.userName.style.display = 'block';
+    refs.email.style.display = 'block';
+    refs.password.style.display = 'block';
     refs.login.style.display = 'none';
-    refs.singup.style.display = 'inline';
+    refs.singup.style.display = 'inline-block';
   }
 });
 

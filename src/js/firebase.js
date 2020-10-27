@@ -4,6 +4,7 @@ import { setStatsHTML } from './stats';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import { onCloseModal } from './auth-modal';
 
 Refs.login.addEventListener('click', authorization);
 Refs.logout.addEventListener('click', logOut);
@@ -21,23 +22,17 @@ firebase.initializeApp({
 
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
-  if (fbUser) {
-    // Refs.logout.style.display = 'inline';
-    Refs.login.style.display = 'none';
-    // Refs.userName.style.display = 'none';
-    Refs.singup.style.display = 'none';
-    // Refs.email.style.display = 'none';
-    // Refs.password.style.display = 'none';
-  } else {
-    Refs.login.style.display = 'inline';
-    Refs.singup.style.display = 'inline';
+  const signInBtn = document.querySelector('.btn[data-type="signin"]');
+  const signUpBtn = document.querySelector('.btn[data-type="signup"]');
 
-    // Refs.logout.style.display = 'none';
-    // Refs.login.style.display = 'inline';
-    // Refs.singup.style.display = 'inline';
-    // Refs.email.style.display = 'inline-block';
-    // Refs.password.style.display = 'inline-block';
-    // Refs.userName.style.display = 'inline-block';
+  if (fbUser) {
+    signInBtn.style.display = 'none';
+    signUpBtn.style.display = 'none';
+    Refs.logout.style.display = 'inline';
+  } else {
+    signInBtn.style.display = 'inline';
+    signUpBtn.style.display = 'inline';
+    Refs.logout.style.display = 'none';
   }
 });
 
@@ -49,6 +44,8 @@ async function authorization(e) {
       Refs.email.value,
       Refs.password.value,
     );
+
+    onCloseModal();
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -62,6 +59,7 @@ function logOut(e) {
 
 async function singUp(e) {
   e.preventDefault();
+
   try {
     const userName = Refs.userName.value;
     const nameAvailable = await userNameAvailable(userName);
@@ -72,6 +70,7 @@ async function singUp(e) {
         Refs.password.value,
       );
       await addUserToDB(user, userName);
+      onCloseModal();
     } else {
       alert('Username already exists');
     }
@@ -145,23 +144,11 @@ export async function updateUserStats(newScore) {
 }
 
 async function updateTopStats(newStats) {
-  const uniqStats = [];
-  const map = new Map();
-  for (const item of newStats) {
-    if (!map.has(item.name)) {
-      map.set(item.name, true);
-      uniqStats.push({
-        name: item.name,
-        score: item.score,
-      });
-    }
-  }
-
   const db = firebase.database();
-  const stats = db.ref('TOP10');
-  const sortedStats = getSortedTopList(uniqStats);
-  console.log(sortedStats);
-  stats.set(sortedStats);
+  const stats = db.ref(`/TOP10/${mode}`);
+  const sortedStats = getSortedTopList(newStats);
+  const uniqStats = getUniStatsList(sortedStats);
+  stats.set(uniqStats);
 }
 
 export async function getTopStats() {
