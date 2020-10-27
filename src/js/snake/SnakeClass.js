@@ -60,7 +60,7 @@ class Snake {
     }
 
     if (this.checkCollision(newHead)) {
-      console.log('dtp');
+      //console.log('dtp');
       gameOver();
       return;
     }
