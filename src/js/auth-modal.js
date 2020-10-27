@@ -36,7 +36,11 @@ function onClickBackDrop(event) {
 // }
 
 refs.openModal.addEventListener('click', event => {
-  if (event.target.nodeName === 'BUTTON') {
+  console.dir(event.target);
+  if (
+    event.target.dataset.type !== 'logout' &&
+    event.target.nodeName === 'BUTTON'
+  ) {
     onOpenAuthModal();
   }
 

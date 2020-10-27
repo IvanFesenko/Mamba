@@ -6,7 +6,7 @@ import 'firebase/auth';
 import 'firebase/database';
 
 Refs.login.addEventListener('click', authorization);
-// Refs.logout.addEventListener('click', logOut);
+Refs.logout.addEventListener('click', logOut);
 Refs.singup.addEventListener('click', singUp);
 
 firebase.initializeApp({
@@ -22,15 +22,16 @@ firebase.initializeApp({
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
-    Refs.login.textContent = 'Logout';
     // Refs.logout.style.display = 'inline';
-    // Refs.login.style.display = 'none';
+    Refs.login.style.display = 'none';
     // Refs.userName.style.display = 'none';
-    // Refs.singup.style.display = 'none';
+    Refs.singup.style.display = 'none';
     // Refs.email.style.display = 'none';
     // Refs.password.style.display = 'none';
   } else {
-    Refs.login.textContent = 'Sign in';
+    Refs.login.style.display = 'inline';
+    Refs.singup.style.display = 'inline';
+
     // Refs.logout.style.display = 'none';
     // Refs.login.style.display = 'inline';
     // Refs.singup.style.display = 'inline';
