@@ -11,6 +11,25 @@ Refs.login.addEventListener('click', authorization);
 Refs.logout.addEventListener('click', logOut);
 Refs.singup.addEventListener('click', singUp);
 
+function getUniStatsList(list) {
+  const uniqStats = [];
+  const map = new Map();
+  for (const item of list) {
+    if (!map.has(item.name)) {
+      map.set(item.name, true);
+      uniqStats.push({
+        name: item.name,
+        score: item.score,
+      });
+    }
+  }
+  return uniqStats;
+}
+
+function getSortedTopList(list) {
+  return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
+}
+
 firebase.initializeApp({
   apiKey: 'AIzaSyBMhO0NQUdNhSwM2MzfffK0CnXNvO-SQ5Q',
   authDomain: 'snake-e2214.firebaseapp.com',
@@ -185,23 +204,4 @@ export async function userGetTop(score) {
     return true;
   }
   return false;
-}
-
-function getUniStatsList(list) {
-  const uniqStats = [];
-  const map = new Map();
-  for (const item of list) {
-    if (!map.has(item.name)) {
-      map.set(item.name, true);
-      uniqStats.push({
-        name: item.name,
-        score: item.score,
-      });
-    }
-  }
-  return uniqStats;
-}
-
-function getSortedTopList(list) {
-  return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
