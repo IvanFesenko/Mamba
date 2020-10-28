@@ -23,8 +23,9 @@
 
   &__content {
     position: absolute;
-    width: 500px;
-    height: 500px;
+
+    width: 600px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,7 +62,7 @@
 }
 
 .form__registration > input {
-  width: 100%;
+  width: 300px;
   height: 40px;
   border: #008080 2px solid;
   border-radius: 10px;
