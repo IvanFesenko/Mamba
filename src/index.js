@@ -8,6 +8,7 @@ import './scss/main.scss';
 import './js/script.js';
 import './js/snake/snake.js';
 import './js/auth-modal.js';
+import './js/preloader';
 
 // setup materialize components
 // document.addEventListener('DOMContentLoaded', function () {

@@ -13,6 +13,9 @@ const Refs = {
   game: document.querySelector('.snake-wrp'),
 
   //auth-modal
+  
+  mainSignInBtn: document.querySelector('.btn[data-type="signin"]'),
+  mainSignUpBtn: document.querySelector('.btn[data-type="signup"]'),
   authModal: document.getElementById('auth-modal'),
   authModalOverlay: document.getElementById('auth-modal-overlay'),
   openModal: document.querySelector('.sing-in-wrap'),

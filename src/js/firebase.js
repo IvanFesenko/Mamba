@@ -11,25 +11,6 @@ Refs.login.addEventListener('click', authorization);
 Refs.logout.addEventListener('click', logOut);
 Refs.singup.addEventListener('click', singUp);
 
-function getUniStatsList(list) {
-  const uniqStats = [];
-  const map = new Map();
-  for (const item of list) {
-    if (!map.has(item.name)) {
-      map.set(item.name, true);
-      uniqStats.push({
-        name: item.name,
-        score: item.score,
-      });
-    }
-  }
-  return uniqStats;
-}
-
-function getSortedTopList(list) {
-  return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
-}
-
 firebase.initializeApp({
   apiKey: 'AIzaSyBMhO0NQUdNhSwM2MzfffK0CnXNvO-SQ5Q',
   authDomain: 'snake-e2214.firebaseapp.com',
@@ -42,16 +23,10 @@ firebase.initializeApp({
 
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
-  const signInBtn = document.querySelector('.btn[data-type="signin"]');
-  const signUpBtn = document.querySelector('.btn[data-type="signup"]');
   if (fbUser) {
-    signInBtn.style.display = 'none';
-    signUpBtn.style.display = 'none';
-    Refs.logout.style.display = 'inline';
+    showLogoutBtn();
   } else {
-    signInBtn.style.display = 'inline';
-    signUpBtn.style.display = 'inline';
-    Refs.logout.style.display = 'none';
+    hideLogoutBtn();
   }
 });
 
@@ -204,4 +179,35 @@ export async function userGetTop(score) {
     return true;
   }
   return false;
+}
+
+function getUniStatsList(list) {
+  const uniqStats = [];
+  const map = new Map();
+  for (const item of list) {
+    if (!map.has(item.name)) {
+      map.set(item.name, true);
+      uniqStats.push({
+        name: item.name,
+        score: item.score,
+      });
+    }
+  }
+  return uniqStats;
+}
+
+function getSortedTopList(list) {
+  return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
+}
+
+function showLogoutBtn() {
+  Refs.mainSignInBtn.style.display = 'none';
+  Refs.mainSignUpBtn.style.display = 'none';
+  Refs.logout.style.display = 'inline';
+}
+
+function hideLogoutBtn() {
+  Refs.mainSignInBtn.style.display = 'inline';
+  Refs.mainSignUpBtn.style.display = 'inline';
+  Refs.logout.style.display = 'none';
 }
