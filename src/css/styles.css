@@ -109,6 +109,8 @@ input[type='radio'].visually-hidden {
 }
 
 .top-players {
+  width: 270px;
+  height: 385px;
   position: relative;
   padding-top: 40px;
   color: #fff;
@@ -207,7 +209,7 @@ input[type='radio'].visually-hidden {
 }
 
 .logo-box {
-  width: 220px;
+  width: 270px;
   height: 385px;
   position: relative;
   padding-top: 40px;
@@ -254,14 +256,22 @@ input[type='radio'].visually-hidden {
 }
 
 .logo-text-img {
+  width: 80%;
+  margin: 0 auto;
   filter: drop-shadow(0 12px 10px rgba(255, 255, 255, 1));
 }
 
 .sing-in-wrap {
   display: flex;
   justify-content: center;
-  padding-top: 40px;
-  margin-bottom: 30px;
+  align-items: center;
+  /* width: 600px;
+  height: 600px;
+  transform: scale(0.9);
+  transition: transform 200ms ease-in-out;
+  border-radius: 30px;
+  background-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%),
+    linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%); */
 }
 
 .command {
@@ -312,6 +322,13 @@ input[type='radio'].visually-hidden {
 .auth-btn:hover {
   box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
   background-position: 0 0;
+}
+
+.button-container-logout {
+  position: absolute;
+  bottom: 4%;
+  left: 16%;
+  margin: 0;
 }
 
 .command-text {

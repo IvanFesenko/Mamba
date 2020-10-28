@@ -2,6 +2,7 @@ import Refs from './refs';
 import { setStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
 import { onCloseModal } from './auth-modal';
+import {hideElement, showElement} from './show-hide';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -45,13 +46,13 @@ firebase.auth().onAuthStateChanged(fbUser => {
   const signInBtn = document.querySelector('.btn[data-type="signin"]');
   const signUpBtn = document.querySelector('.btn[data-type="signup"]');
   if (fbUser) {
-    signInBtn.style.display = 'none';
-    signUpBtn.style.display = 'none';
-    Refs.logout.style.display = 'inline';
+    hideElement(Refs.buttonWrapSing);
+    showElement(Refs.buttonWrapLog);
+    showElement(Refs.gameWrap);    
   } else {
     signInBtn.style.display = 'inline';
     signUpBtn.style.display = 'inline';
-    Refs.logout.style.display = 'none';
+    hideElement(Refs.buttonWrapLog);   
   }
 });
 
@@ -63,7 +64,9 @@ async function authorization(e) {
       Refs.email.value,
       Refs.password.value,
     );
-    onCloseModal();
+    onCloseModal();      
+    showElement(Refs.gameWrap); 
+    hideElement(Refs.buttonWrapSing);
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -73,6 +76,8 @@ async function authorization(e) {
 function logOut(e) {
   e.preventDefault();
   firebase.auth().signOut();
+  hideElement(Refs.gameWrap)
+  showElement(Refs.buttonWrapSing);
 }
 
 async function singUp(e) {
@@ -87,6 +92,8 @@ async function singUp(e) {
         Refs.password.value,
       );
       await addUserToDB(user, userName);
+      showElement(Refs.gameWrap);
+      hideElement(Refs.buttonWrapSing);
       onCloseModal();
     } else {
       alert('Username already exists');
