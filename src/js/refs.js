@@ -11,10 +11,6 @@ const Refs = {
   snakeScore: document.querySelector('.snake-score'),
   topList: document.querySelector('.players-list'),
   game: document.querySelector('.snake-wrp'),
-  gameWrap: document.querySelector('.main-content-wrap'),
-  buttonWrapSing: document.querySelector('.button-container'),
-  buttonWrapLog: document.querySelector('.button-container-logout'),
-
 
   //auth-modal
   
