@@ -57,98 +57,101 @@
       </svg>
     </div>
 
-    <header class="header">
-  <body class="homepage">
     <main class="main">
       <div class="container">
-        <nav class="header__nav">
-          <div class="logo-box">
-            <img src="./images/logo.png" class="logo-text-img" alt="logo" />
-            <p class="logo-title">Mamba</p>
-            <p class="logo-text">Live in your world, play in ours</p>
-            <div class="button-container-logout is-hidden">
-              <button
-                class="auth-btn logout btn"
-                type="button"
-                data-type="logout"
-                id="logoutbtn"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
+        <header class="header">
+          <nav class="header__nav">
+            <div class="left-sidebar">
+              <div class="logo-box">
+                <img src="./images/logo.png" class="logo-text-img" alt="logo" />
+                <p class="logo-title">Mamba</p>
+                <p class="logo-text">Live in your world, play in ours</p>
 
-          <div class="button-container">
-            <div class="sing-in-wrap">
-              <button
-                class="auth-btn btn js-auth-modal__open"
-                type="button"
-                data-type="signin"
-              >
-                Sing in
-              </button>
-
-              <button
-                class="auth-btn btn auth-btn-up js-auth-modal__open"
-                type="button"
-                data-type="signup"
-              >
-                Sing up
-              </button>
-            </div>
-          </div>
-
-          <div class="main-content-wrap is-hidden">
-            <div class="snake-wrp">
-              <div class="mode-wrp">
-                <div class="options">
-                  <div class="options__item">
-                    <input
-                      id="black-color"
-                      type="radio"
-                      name="color"
-                      class="options__input"
-                      data-mode="classic"
-                    />
-                    <label class="options__label" for="black-color"
-                      ><span>Classic</span></label
-                    >
-                  </div>
-
-                  <div class="options__item">
-                    <input
-                      id="white-color"
-                      type="radio"
-                      name="color"
-                      class="options__input"
-                      data-mode="ignoreWallsCollisionMode"
-                    />
-                    <label class="options__label" for="white-color"
-                      ><span>Arcade</span></label
-                    >
-                  </div>
+                <div class="logout-wrap is-hidden">
+                  <button
+                    class="auth-btn logout btn"
+                    type="button"
+                    data-type="logout"
+                    id="logoutbtn"
+                  >
+                    Logout
+                  </button>
                 </div>
               </div>
-              <p class="snake-score">Score: 0</p>
-              <div class="canvas-wrp">
-                <canvas
-                  class="canvas"
-                  id="canvas"
-                  width="528"
-                  height="528"
-                ></canvas>
-              </div>
-              <button type="button" class="auth-btn btn snake-start">
-                Start Game
-              </button>
-            </div>
-          </div>
 
-          <div class="top-players">
-            <h2 class="top__title"><span>TOP-10</span> players</h2>
-            <ul class="players-list"></ul>
-          </div>
-        </nav>
+              <div class="registration">
+                <h3 class="registration__title">Login / Registration</h3>
+                <div class="sing-in-wrap">
+                  <button
+                    class="auth-btn-reg btn js-auth-modal__open"
+                    type="button"
+                    data-type="signin"
+                  >
+                    Sing in
+                  </button>
+
+                  <button
+                    class="auth-btn-reg btn auth-btn-up js-auth-modal__open"
+                    type="button"
+                    data-type="signup"
+                  >
+                    Sing up
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-wrap">
+              <div class="snake-wrp">
+                <div class="mode-wrp">
+                  <div class="options">
+                    <div class="options__item">
+                      <input
+                        id="black-color"
+                        type="radio"
+                        name="color"
+                        class="options__input"
+                        data-mode="classic"
+                      />
+                      <label class="options__label" for="black-color"
+                        ><span>Classic</span></label
+                      >
+                    </div>
+
+                    <div class="options__item">
+                      <input
+                        id="white-color"
+                        type="radio"
+                        name="color"
+                        class="options__input"
+                        data-mode="ignoreWallsCollisionMode"
+                      />
+                      <label class="options__label" for="white-color"
+                        ><span>Arcade</span></label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <p class="snake-score">Score: 0</p>
+                <div class="canvas-wrp">
+                  <canvas
+                    class="canvas"
+                    id="canvas"
+                    width="528"
+                    height="528"
+                  ></canvas>
+                </div>
+                <button type="button" class="auth-btn btn snake-start">
+                  Start Game
+                </button>
+              </div>
+            </div>
+
+            <div class="top-players">
+              <h2 class="top__title"><span>TOP-10</span> players</h2>
+              <ul class="players-list"></ul>
+            </div>
+          </nav>
+        </header>
       </div>
     </main>
 
@@ -162,127 +165,57 @@
           </div>
         </div>
         <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
-
-        <div class="auth-modal" id="auth-modal">
-          <div class="auth-modal__overlay" id="auth-modal-overlay"></div>
-          <div class="auth-modal__content js-auth-modal__content">
-            <div class="auth-modal__content--wrapper">
-              <button class="auth-modal__close" id="close-auth-modal"></button>
-              <form action="#" class="form__registration">
-                <input
-                  type="text"
-                  id="inputUserName"
-                  class="form__registration--control"
-                  placeholder="User name *"
-                  required=""
-                  autofocus=""
-                  maxlength="15"
-                />
-                <input
-                  type="email"
-                  id="inputEmail"
-                  class="form__registration--control"
-                  placeholder="Email address *"
-                  required=""
-                />
-                <input
-                  type="password"
-                  id="inputPassword"
-                  class="form__registration--control"
-                  placeholder="Password *"
-                  required=""
-                />
-
-                <button
-                  class="btn btn-success btn-block auth-btn"
-                  id="loginbtn"
-                  type="button"
-                >
-                  Sign in
-                </button>
-
-                <button
-                  class="btn btn-success btn-block auth-btn"
-                  id="singupbtn"
-                  type="button"
-                >
-                  Sign up
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
       </div>
     </footer>
 
-    <!-- SIGN UP MODAL -->
-    <!-- <div id="modal-signup" class="modal">
-      <div class="modal-content">
-        <h4>Sign up</h4>
-        <br />
-        <form id="signup-form">
-          <div class="input-field">
-            <input type="email" id="signup-email" required />
-            <label for="signup-email">Email address</label>
-          </div>
-          <div class="input-field">
-            <input type="password" id="signup-password" required />
-            <label for="signup-password">Choose password</label>
-          </div>
-          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-        </form>
-      </div>
-    </div> -->
+    <div class="auth-modal" id="auth-modal">
+      <div class="auth-modal__overlay" id="auth-modal-overlay"></div>
+      <div class="auth-modal__content js-auth-modal__content">
+        <div class="auth-modal__content--wrapper">
+          <button class="auth-modal__close" id="close-auth-modal"></button>
+          <form action="#" class="form__registration">
+            <input
+              type="text"
+              id="inputUserName"
+              class="form__registration--control"
+              placeholder="User name *"
+              required=""
+              autofocus=""
+              maxlength="15"
+            />
+            <input
+              type="email"
+              id="inputEmail"
+              class="form__registration--control"
+              placeholder="Email address *"
+              required=""
+            />
+            <input
+              type="password"
+              id="inputPassword"
+              class="form__registration--control"
+              placeholder="Password *"
+              required=""
+            />
 
-    <!-- LOGIN MODAL -->
-    <!-- <div id="modal-login" class="modal">
-      <div class="modal-content">
-        <h4>Login</h4>
-        <br />
-        <form id="login-form">
-          <div class="input-field">
-            <input type="email" id="login-email" required />
-            <label for="login-email">Email address</label>
-          </div>
-          <div class="input-field">
-            <input type="password" id="login-password" required />
-            <label for="login-password">Your password</label>
-          </div>
-          <button class="btn yellow darken-2 z-depth-0">Login</button>
-        </form>
-      </div>
-    </div> -->
+            <button
+              class="btn btn-success btn-block auth-btn"
+              id="loginbtn"
+              type="button"
+            >
+              Sign in
+            </button>
 
-    <!-- ACCOUNT MODAL -->
-    <!-- <div id="modal-account" class="modal">
-      <div class="modal-content center-align">
-        <h4>Account details</h4>
-        <br />
-        <div class="account-details"></div>
+            <button
+              class="btn btn-success btn-block auth-btn"
+              id="singupbtn"
+              type="button"
+            >
+              Sign up
+            </button>
+          </form>
+        </div>
       </div>
-    </div> -->
-
-    <!-- CREATE GUIDE MODAL -->
-    <!-- <div id="modal-create" class="modal">
-      <div class="modal-content">
-        <h4>Create Guide</h4>
-        <br />
-        <form id="create-form">
-          <div class="input-field">
-            <input type="text" id="title" required />
-            <label for="title">Guide Title</label>
-          </div>
-          <div class="input-field">
-            <textarea
-              id="content"
-              class="materialize-textarea"
-              required
-            ></textarea>
-            <label for="content">Guide Content</label>
-          </div>
-          <button class="btn yellow darken-2 z-depth-0">Create</button>
-        </form>
-      </div>
-    </div> -->
+    </div>
   </body>
 </html>
