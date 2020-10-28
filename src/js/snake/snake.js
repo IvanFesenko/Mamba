@@ -3,6 +3,7 @@ import directions from './directions';
 import apple from './Apple';
 import barrier from './Barrier';
 import { MODE_CLASSIC } from './modes';
+import { TouchStart, TouchMove, TouchEnd } from './touchFunctions';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
 import { setStatsHTML } from '../stats';
@@ -12,7 +13,7 @@ import '../../css/snake.css';
 const modeInputs = Refs.modeWrp.querySelectorAll('input');
 export const ctx = Refs.canvas.getContext('2d');
 
-let playing = true;
+let playing = false;
 let snake = null;
 let score = 0;
 
@@ -77,7 +78,26 @@ const drawBorder = () => {
   ctx.fillRect(0, 0, blockSize, height);
   ctx.fillRect(width - blockSize, 0, blockSize, height);
 };
-//============================
+
+//=======================================swipes
+
+export const swipeDirectionsMaker = newDirection => {
+  //set new directions
+  if (playing) {
+    if (
+      newDirection === 'up' ||
+      newDirection === 'down' ||
+      newDirection === 'right' ||
+      newDirection === 'left'
+    ) {
+      if (newDirection !== undefined) {
+        snake.setDirection(newDirection);
+      }
+    }
+  }
+};
+
+//=======================================swipes
 
 export const gameOver = () => {
   playing = false;
@@ -154,3 +174,9 @@ drawBorder();
 //listeners
 Refs.startButton.addEventListener('click', startBtnHandler);
 Refs.modeWrp.addEventListener('click', setNewMode);
+
+//listeners for touching(swiping) in canvas
+canvas.addEventListener('touchstart', e => TouchStart(e)); //first touch
+canvas.addEventListener('touchmove', e => TouchMove(e)); //moving touch
+canvas.addEventListener('touchend', TouchEnd); // user end touching
+canvas.addEventListener('touchcancel', TouchEnd); // user end touching
