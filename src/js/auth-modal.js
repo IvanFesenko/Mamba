@@ -35,16 +35,16 @@ refs.openModal.addEventListener('click', event => {
     refs.userName.style.display = 'none';
     refs.email.style.display = 'block';
     refs.password.style.display = 'block';
-    refs.login.style.display = 'block';
-    refs.singup.style.display = 'none';
+    // refs.login.style.display = 'block';
+    // refs.singup.style.display = 'none';
   }
 
   if (event.target.dataset.type === 'signup') {
     refs.userName.style.display = 'block';
     refs.email.style.display = 'block';
     refs.password.style.display = 'block';
-    refs.login.style.display = 'none';
-    refs.singup.style.display = 'inline-block';
+    // refs.login.style.display = 'none';
+    // refs.singup.style.display = 'inline-block';
   }
 });
 

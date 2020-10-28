@@ -66,9 +66,19 @@
             <img src="./images/logo.png" class="logo-text-img" alt="logo" />
             <p class="logo-title">Mamba</p>
             <p class="logo-text">Live in your world, play in ours</p>
+            <div class="button-container-logout is-hidden">
+              <button
+                class="auth-btn logout btn"
+                type="button"
+                data-type="logout"
+                id="logoutbtn"
+              >
+                Logout
+              </button>
+            </div>
           </div>
 
-          <div class="main-content-wrap">
+          <div class="button-container">
             <div class="sing-in-wrap">
               <button
                 class="auth-btn btn js-auth-modal__open"
@@ -79,15 +89,6 @@
               </button>
 
               <button
-                class="auth-btn btn"
-                type="button"
-                data-type="logout"
-                id="logoutbtn"
-              >
-                Logout
-              </button>
-
-              <button
                 class="auth-btn btn auth-btn-up js-auth-modal__open"
                 type="button"
                 data-type="signup"
@@ -95,7 +96,9 @@
                 Sing up
               </button>
             </div>
+          </div>
 
+          <div class="main-content-wrap is-hidden">
             <div class="snake-wrp">
               <div class="mode-wrp">
                 <div class="options">
@@ -126,7 +129,7 @@
                   </div>
                 </div>
               </div>
-              <p class="snake-score"></p>
+              <p class="snake-score">Score: 0</p>
               <div class="canvas-wrp">
                 <canvas
                   class="canvas"
@@ -145,15 +148,7 @@
             <h2 class="top__title"><span>TOP-10</span> players</h2>
             <ul class="players-list"></ul>
           </div>
-
-          <div class="header__button-wrap is-hidden">
-            <div class="header__burger" id="burger">
-              <span></span>
-            </div>
-          </div>
         </nav>
-
-        <div class="ofer"></div>
       </div>
     </main>
 
