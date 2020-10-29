@@ -115,8 +115,6 @@ input[type='radio'].visually-hidden {
 }
 
 .top-players {
-  width: 270px;
-  height: 385px;
   position: relative;
   padding-top: 40px;
   color: #fff;
@@ -342,6 +340,7 @@ input[type='radio'].visually-hidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .command {
@@ -413,13 +412,6 @@ input[type='radio'].visually-hidden {
 .auth-btn-reg:hover {
   box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
   background-position: 0 0;
-}
-
-.button-container-logout {
-  position: absolute;
-  bottom: 4%;
-  left: 16%;
-  margin: 0;
 }
 
 .command-text {
