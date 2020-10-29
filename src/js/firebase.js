@@ -2,7 +2,7 @@ import Refs from './refs';
 import { setStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
 import { onCloseModal } from './auth-modal';
-import { hideElement, showElement } from './show-hide';
+import {hideElement, showElement} from './show-hide';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -33,7 +33,6 @@ firebase.auth().onAuthStateChanged(fbUser => {
   } else {    
     hideElement(Refs.logoutWrap); 
     Refs.regUser.style.display = 'none';
-
   }
 });
 
@@ -45,11 +44,9 @@ async function authorization(e) {
       Refs.email.value,
       Refs.password.value,
     );
-
-    onCloseModal();
+    onCloseModal();    
     hideElement(Refs.registration);
     Refs.regUser.style.display = 'block';
-
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -60,7 +57,6 @@ function logOut(e) {
   e.preventDefault();
   firebase.auth().signOut(); 
   Refs.regUser.style.display = 'none';
-
   showElement(Refs.registration);
   Refs.regTitle.innerHTML = 'Login / Registration'
   
@@ -77,8 +73,7 @@ async function singUp(e) {
         Refs.email.value,
         Refs.password.value,
       );
-
-      await addUserToDB(user, userName);
+      await addUserToDB(user, userName);      
       hideElement(Refs.registration);
       Refs.regUser.style.display = 'block';
       onCloseModal();
@@ -218,4 +213,5 @@ function getUniStatsList(list) {
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
+
 
