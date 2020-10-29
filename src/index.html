@@ -69,103 +69,98 @@
 
     <main class="main">
       <div class="container">
+        <div class="header__nav">
+          <div class="left-sidebar">
+            <div class="logo-box">
+              <img src="./images/logo.png" class="logo-text-img" alt="logo" />
+              <p class="logo-title">Mamba</p>
+              <p class="logo-text">Live in your world, play in ours</p>
 
-        <div class="header">
-          <nav class="header__nav">
-            <div class="left-sidebar">
-              <div class="logo-box">
-                <img src="./images/logo.png" class="logo-text-img" alt="logo" />
-                <p class="logo-title">Mamba</p>
-                <p class="logo-text">Live in your world, play in ours</p>
-
-                <div class="logout-wrap is-hidden">
-                  <button
-                    class="auth-btn logout btn"
-                    type="button"
-                    data-type="logout"
-                    id="logoutbtn"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </div>
-
-              <div class="registration">
-                <h3 class="registration__title">Login / Registration</h3>
-                <div class="sing-in-wrap">
-                  <button
-                    class="auth-btn-reg btn js-auth-modal__open"
-                    type="button"
-                    data-type="signin"
-                  >
-                    Sing in
-                  </button>
-
-                  <button
-                    class="auth-btn-reg btn auth-btn-up js-auth-modal__open"
-                    type="button"
-                    data-type="signup"
-                  >
-                    Sing up
-                  </button>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="main-content-wrap">
-              <div class="snake-wrp">
-                <div class="mode-wrp">
-                  <div class="options">
-                    <div class="options__item">
-                      <input
-                        id="black-color"
-                        type="radio"
-                        name="color"
-                        class="options__input"
-                        data-mode="classic"
-                      />
-                      <label class="options__label" for="black-color"
-                        ><span>Classic</span></label
-                      >
-                    </div>
-
-                    <div class="options__item">
-                      <input
-                        id="white-color"
-                        type="radio"
-                        name="color"
-                        class="options__input"
-                        data-mode="ignoreWallsCollisionMode"
-                      />
-                      <label class="options__label" for="white-color"
-                        ><span>Arcade</span></label
-                      >
-                    </div>
-                  </div>
-                </div>
-                <p class="snake-score">Score: 0</p>
-                <div class="canvas-wrp">
-                  <canvas
-                    class="canvas"
-                    id="canvas"
-                    width="528"
-                    height="528"
-                  ></canvas>
-                </div>
-                <button type="button" class="auth-btn btn snake-start">
-                  Start Game
+              <div class="logout-wrap is-hidden">
+                <button
+                  class="auth-btn logout btn"
+                  type="button"
+                  data-type="logout"
+                  id="logoutbtn"
+                >
+                  Logout
                 </button>
               </div>
-
             </div>
 
+            <div class="registration">
+              <h3 class="registration__title">Login / Registration</h3>
+              <div class="sing-in-wrap">
+                <button
+                  class="auth-btn-reg btn js-auth-modal__open"
+                  type="button"
+                  data-type="signin"
+                >
+                  Sing in
+                </button>
 
-            <div class="top-players">
-              <h2 class="top__title"><span>TOP-10</span> players</h2>
-              <ul class="players-list"></ul>
+                <button
+                  class="auth-btn-reg btn auth-btn-up js-auth-modal__open"
+                  type="button"
+                  data-type="signup"
+                >
+                  Sing up
+                </button>
+              </div>
             </div>
-          </nav>
+          </div>
+
+          <div class="main-content-wrap">
+            <div class="snake-wrp">
+              <div class="mode-wrp">
+                <div class="options">
+                  <div class="options__item">
+                    <input
+                      id="black-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="classic"
+                    />
+                    <label class="options__label" for="black-color"
+                      ><span>Classic</span></label
+                    >
+                  </div>
+                  <div class="options__item">
+                    <input
+                      id="white-color"
+                      type="radio"
+                      name="color"
+                      class="options__input"
+                      data-mode="ignoreWallsCollisionMode"
+                    />
+                    <label class="options__label" for="white-color"
+                      ><span>Arcade</span></label
+                    >
+                  </div>
+                </div>
+              </div>
+              <p class="snake-score">Score: 0</p>
+              <div class="canvas-wrp">
+                <canvas
+                  class="canvas"
+                  id="canvas"
+                  width="528"
+                  height="528"
+                ></canvas>
+              </div>
+              <button type="button" class="auth-btn btn snake-start">
+                Start Game
+              </button>
+
+            </div>
+          </div>
+
+
+          <div class="top-players">
+            <h2 class="top__title"><span>TOP-10</span> players</h2>
+            <ul class="players-list"></ul>
+          </div>
         </div>
 
       </div>
