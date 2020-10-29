@@ -110,6 +110,7 @@ input[type='radio'].visually-hidden {
   background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
   margin-bottom: 30px;
 }
+
 .top-players:before {
   content: '';
   position: absolute;
