@@ -5,6 +5,8 @@ let touchStart = null; //first position of touch
 let touchPosition = null; //current position of touch
 
 export const TouchStart = e => {
+  e.preventDefault();
+  e.stopPropagation();
   //get current position of touch
   touchStart = {
     x: e.changedTouches[0].clientX,
@@ -14,6 +16,8 @@ export const TouchStart = e => {
 };
 
 export const TouchMove = e => {
+  e.preventDefault();
+  e.stopPropagation();
   //get new position
   touchPosition = {
     x: e.changedTouches[0].clientX,
@@ -21,7 +25,9 @@ export const TouchMove = e => {
   };
 };
 
-export const TouchEnd = () => {
+export const TouchEnd = e => {
+  e.preventDefault();
+  e.stopPropagation();
   CheckAction(); //check witch gesture it was
   //clearing positions
   touchStart = null;
