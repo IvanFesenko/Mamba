@@ -22,13 +22,17 @@ firebase.initializeApp({
   appId: '1:1059522027824:web:73740d4b7a4ff4094228f5',
 });
 
+
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
-  if (fbUser) {
-    hideElement(Refs.registration);
-    showElement(Refs.logoutWrap);      
+  if (fbUser) {    
+    Refs.regTitle.innerHTML = 'You are logged in as:';
+    getUserName().then(user => Refs.regUser.textContent = user);
+    hideElement(Refs.registration);    
+    showElement(Refs.logoutWrap);
   } else {    
     hideElement(Refs.logoutWrap); 
+    Refs.regUser.style.display = 'none';
   }
 });
 
@@ -42,6 +46,7 @@ async function authorization(e) {
     );
     onCloseModal();    
     hideElement(Refs.registration);
+    Refs.regUser.style.display = 'block';
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -50,8 +55,11 @@ async function authorization(e) {
 
 function logOut(e) {
   e.preventDefault();
-  firebase.auth().signOut();  
+  firebase.auth().signOut(); 
+  Refs.regUser.style.display = 'none';
   showElement(Refs.registration);
+  Refs.regTitle.innerHTML = 'Login / Registration'
+  
 }
 
 async function singUp(e) {
@@ -67,6 +75,7 @@ async function singUp(e) {
       );
       await addUserToDB(user, userName);      
       hideElement(Refs.registration);
+      Refs.regUser.style.display = 'block';
       onCloseModal();
     } else {
       alert('Username already exists');
@@ -204,4 +213,5 @@ function getUniStatsList(list) {
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
+
 
