@@ -1,7 +1,7 @@
 import Snake from './SnakeClass';
 import directions from './directions';
 import apple from './Apple';
-import barrier from './Barrier';
+// import barrier from './Barrier';
 import { MODE_CLASSIC } from './modes';
 import { TouchStart, TouchMove, TouchEnd } from './touchFunctions';
 import { width, height, blockSize } from './blockSizes';
@@ -118,6 +118,11 @@ export const gameOver = () => {
       e.removeAttribute('disabled', 'disabled');
     });
     window.removeEventListener('keydown', arrowKeysHandler, false);
+
+    canvas.removeEventListener('touchstart', e => TouchStart(e)); //first touch
+    canvas.removeEventListener('touchmove', e => TouchMove(e)); //moving touch
+    canvas.removeEventListener('touchend', TouchEnd); // user end touching
+    canvas.removeEventListener('touchcancel', TouchEnd); // user end touching
   }
 
   drawGameOver();
@@ -167,6 +172,13 @@ const gameLoop = function () {
     });
     window.addEventListener('keydown', arrowKeysHandler, false);
     document.addEventListener('keydown', directionsMaker);
+
+    //listeners for touching(swiping) in canvas
+
+    canvas.addEventListener('touchstart', e => TouchStart(e)); //first touch
+    canvas.addEventListener('touchmove', e => TouchMove(e)); //moving touch
+    canvas.addEventListener('touchend', TouchEnd); // user end touching
+    canvas.addEventListener('touchcancel', TouchEnd); // user end touching
   }
 };
 drawBorder();
@@ -174,9 +186,3 @@ drawBorder();
 //listeners
 Refs.startButton.addEventListener('click', startBtnHandler);
 Refs.modeWrp.addEventListener('click', setNewMode);
-
-//listeners for touching(swiping) in canvas
-canvas.addEventListener('touchstart', e => TouchStart(e)); //first touch
-canvas.addEventListener('touchmove', e => TouchMove(e)); //moving touch
-canvas.addEventListener('touchend', TouchEnd); // user end touching
-canvas.addEventListener('touchcancel', TouchEnd); // user end touching
