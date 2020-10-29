@@ -1,0 +1,94 @@
+/* 992-1200px */
+@media screen and (max-width: 1250px) {
+  .container {
+    width: 960px;
+  }
+
+  .canvas {
+    width: 383px;
+  }
+}
+
+/* 768-992px */
+@media screen and (max-width: 992px) {
+  .container {
+    width: 700px;
+  }
+
+  .left-sidebar {
+    display: none;
+  }
+
+  .logo-box-tablet {
+    display: block;
+    width: 270px;
+  }
+
+  .registration-wrap-tablet {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .snake-wrp {
+    margin-bottom: 30px;
+  }
+
+  .sing-in-wrap {
+    justify-content: center;
+  }
+
+  .auth-btn-reg {
+    margin-right: 10px;
+  }
+
+  .command-wrap {
+    display: none;
+  }
+
+  .command-wrap-tablet {
+    display: flex;
+  }
+
+  .top-players {
+    margin-bottom: 70px;
+  }
+
+  .footer .container {
+    padding: 20px 0 50px;
+  }
+}
+
+/* 576-768px */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 520px;
+  }
+
+  .logo-box-tablet {
+    display: none;
+  }
+
+  .logo-box-mobile {
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+  }
+
+  .logo-text-img {
+    position: absolute;
+    width: 150px;
+    top: -16px;
+    right: 55px;
+  }
+
+  .logo-title {
+    font-size: 37px;
+  }
+}
+
+/* 320-576px */
+@media screen and (max-width: 576px) {
+  .container {
+    width: 90%;
+  }
+}
