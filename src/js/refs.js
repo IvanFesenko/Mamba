@@ -12,6 +12,11 @@ const Refs = {
   topList: document.querySelector('.players-list'),
   game: document.querySelector('.snake-wrp'),
 
+  gameWrap: document.querySelector('.main-content-wrap'),
+  registration: document.querySelector('.registration'),
+  logoutWrap: document.querySelector('.logout-wrap'),
+
+
   //auth-modal
   
   mainSignInBtn: document.querySelector('.btn[data-type="signin"]'),

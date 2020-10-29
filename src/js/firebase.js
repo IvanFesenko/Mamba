@@ -2,6 +2,7 @@ import Refs from './refs';
 import { setStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
 import { onCloseModal } from './auth-modal';
+import { hideElement, showElement } from './show-hide';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,9 +25,10 @@ firebase.initializeApp({
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
-    showLogoutBtn();
+    hideElement(Refs.registration);
+    showElement(Refs.logoutWrap);
   } else {
-    hideLogoutBtn();
+    hideElement(Refs.logoutWrap);
   }
 });
 
@@ -38,7 +40,10 @@ async function authorization(e) {
       Refs.email.value,
       Refs.password.value,
     );
+
     onCloseModal();
+    hideElement(Refs.registration);
+
     await getUserStats();
   } catch {
     alert('Failed to login');
@@ -47,7 +52,9 @@ async function authorization(e) {
 
 function logOut(e) {
   e.preventDefault();
+
   firebase.auth().signOut();
+  showElement(Refs.registration);
 }
 
 async function singUp(e) {
@@ -61,7 +68,10 @@ async function singUp(e) {
         Refs.email.value,
         Refs.password.value,
       );
+
       await addUserToDB(user, userName);
+      hideElement(Refs.registration);
+
       onCloseModal();
     } else {
       alert('Username already exists');
@@ -198,16 +208,4 @@ function getUniStatsList(list) {
 
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
-}
-
-function showLogoutBtn() {
-  Refs.mainSignInBtn.style.display = 'none';
-  Refs.mainSignUpBtn.style.display = 'none';
-  Refs.logout.style.display = 'inline';
-}
-
-function hideLogoutBtn() {
-  Refs.mainSignInBtn.style.display = 'inline';
-  Refs.mainSignUpBtn.style.display = 'inline';
-  Refs.logout.style.display = 'none';
 }
