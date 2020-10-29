@@ -13,12 +13,13 @@ const Refs = {
   game: document.querySelector('.snake-wrp'),
 
   gameWrap: document.querySelector('.main-content-wrap'),
-  registration: document.querySelector('.registration'),
+  regTitle: document.querySelector('.registration__title'),
+  regUser: document.querySelector('.registration__user'),
+  registration: document.querySelector('.registration'),  
   logoutWrap: document.querySelector('.logout-wrap'),
 
 
-  //auth-modal
-  
+  //auth-modal  
   mainSignInBtn: document.querySelector('.btn[data-type="signin"]'),
   mainSignUpBtn: document.querySelector('.btn[data-type="signup"]'),
   authModal: document.getElementById('auth-modal'),

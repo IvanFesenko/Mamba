@@ -69,16 +69,20 @@
 
     <main class="main">
       <div class="container">
-        <div class="header__nav">
+        <div class="main__box">
           <div class="left-sidebar">
             <div class="logo-box">
               <img src="./images/logo.png" class="logo-text-img" alt="logo" />
               <p class="logo-title">Mamba</p>
               <p class="logo-text">Live in your world, play in ours</p>
+            </div>
 
+            <div class="registration-wrap">
+              <h3 class="registration__title">Login / Registration</h3>
+              <span class="registration__user"></span>
               <div class="logout-wrap is-hidden">
                 <button
-                  class="auth-btn logout btn"
+                  class="auth-btn-reg logout btn"
                   type="button"
                   data-type="logout"
                   id="logoutbtn"
@@ -86,26 +90,24 @@
                   Logout
                 </button>
               </div>
-            </div>
+              <div class="registration">
+                <div class="sing-in-wrap">
+                  <button
+                    class="auth-btn-reg btn js-auth-modal__open"
+                    type="button"
+                    data-type="signin"
+                  >
+                    Sing in
+                  </button>
 
-            <div class="registration">
-              <h3 class="registration__title">Login / Registration</h3>
-              <div class="sing-in-wrap">
-                <button
-                  class="auth-btn-reg btn js-auth-modal__open"
-                  type="button"
-                  data-type="signin"
-                >
-                  Sing in
-                </button>
-
-                <button
-                  class="auth-btn-reg btn auth-btn-up js-auth-modal__open"
-                  type="button"
-                  data-type="signup"
-                >
-                  Sing up
-                </button>
+                  <button
+                    class="auth-btn-reg btn auth-btn-up js-auth-modal__open"
+                    type="button"
+                    data-type="signup"
+                  >
+                    Sing up
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -113,6 +115,7 @@
           <div class="main-content-wrap">
             <div class="snake-wrp">
               <div class="mode-wrp">
+                <p class="option__title">Select the game mode</p>
                 <div class="options">
                   <div class="options__item">
                     <input
@@ -156,10 +159,21 @@
             </div>
           </div>
 
+          <div class="right-sidebar">
+            <div class="top-players">
+              <h2 class="top__title"><span>TOP-10</span> players</h2>
+              <ul class="players-list"></ul>
+            </div>
 
-          <div class="top-players">
-            <h2 class="top__title"><span>TOP-10</span> players</h2>
-            <ul class="players-list"></ul>
+            <div class="command-wrap">
+              <div class="command">
+                <span class="material-icons icon">fingerprint</span>
+                <div class="command-text">
+                  <span>FSDev</span>
+                  <span>Entertainment</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -168,13 +182,6 @@
 
     <footer class="footer">
       <div class="container">
-        <div class="command">
-          <span class="material-icons icon">fingerprint</span>
-          <div class="command-text">
-            <span>FSDev</span>
-            <span>Entertainment</span>
-          </div>
-        </div>
         <p class="corp">© FSDev ENTERTAINMENT, INC., 2020</p>
       </div>
     </footer>

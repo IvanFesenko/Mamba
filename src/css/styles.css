@@ -101,11 +101,17 @@ input[type='radio'].visually-hidden {
   margin: 0 auto;
 }
 
-.header__nav {
+.main__box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 40px;
+}
+
+.option__title {
+  color: #00aeff;
+  text-align: center;
+  font-size: 22px;
 }
 
 .top-players {
@@ -115,6 +121,7 @@ input[type='radio'].visually-hidden {
   border-radius: 10px;
   padding: 20px;
   background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
+  margin-bottom: 30px;
 }
 
 .top-players:before {
@@ -242,7 +249,7 @@ input[type='radio'].visually-hidden {
 }
 
 .logo-title {
-  font-size: 28px;
+  font-size: 46px;
   font-weight: 700;
   color: #00aeff;
   letter-spacing: 0.04em;
@@ -261,10 +268,14 @@ input[type='radio'].visually-hidden {
 }
 
 .logo-text-img {
+  width: 100%;
+  margin: 0 auto;
   filter: drop-shadow(0 12px 10px rgba(255, 255, 255, 1));
 }
 
-.registration {
+.command-wrap {
+  display: flex;
+  justify-content: center;
   position: relative;
   padding-top: 40px;
   color: #fff;
@@ -275,7 +286,29 @@ input[type='radio'].visually-hidden {
   z-index: 0;
 }
 
-.registration:before {
+.command-wrap:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../images/noise.png');
+  z-index: -1;
+}
+
+.registration-wrap {
+  position: relative;
+  padding-top: 40px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
+  z-index: 0;
+}
+
+.registration-wrap:before {
   content: '';
   position: absolute;
   left: 0;
@@ -290,6 +323,19 @@ input[type='radio'].visually-hidden {
   margin-bottom: 20px;
 }
 
+.registration__user {
+  display: block;
+  margin-bottom: 20px;
+
+  font-size: 28px;
+  font-weight: 700;
+  color: #00aeff;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-shadow: -1px -1px #000, 0 1px 0 #444;
+  transition: all 1s;
+}
+
 .sing-in-wrap {
   display: flex;
   justify-content: space-between;
@@ -301,7 +347,6 @@ input[type='radio'].visually-hidden {
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 15px;
 }
 
 .icon {
@@ -363,13 +408,15 @@ input[type='radio'].visually-hidden {
   );
 }
 
-.auth-btn:hover {
+.auth-btn:hover,
+.auth-btn-reg:hover {
   box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
   background-position: 0 0;
 }
 
 .command-text {
   color: #00aeff;
+  text-align: left;
   font-size: 18px;
   font-weight: 500;
 }
