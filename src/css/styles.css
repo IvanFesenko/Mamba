@@ -279,6 +279,26 @@ input[type='radio'].visually-hidden {
 
 .command-wrap-tablet {
   display: none;
+  justify-content: center;
+  position: relative;
+  padding-top: 40px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
+  z-index: 0;
+}
+
+.command-wrap-tablet:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../images/noise.png');
+  z-index: -1;
 }
 
 .registration-wrap {
