@@ -24,11 +24,6 @@
     width: 270px;
   }
 
-  .registration-wrap-tablet {
-    display: block;
-    margin-bottom: 20px;
-  }
-
   .snake-wrp {
     margin-bottom: 30px;
   }
@@ -95,6 +90,7 @@
 
   .command-wrap {
     display: flex;
+    justify-content: center;
   }
   .canvas {
     width: 500px;

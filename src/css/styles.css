@@ -45,6 +45,7 @@ h6 {
 p {
   margin: 0;
 }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
@@ -52,15 +53,16 @@ body {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.2;
-  /* background: url('../images/bg-repeat.jpg'); */
   background-color: #141d2d;
 }
+
 button:hover,
 button:focus,
 input:hover,
 input:focus {
   outline: none;
 }
+
 .visually-hidden:not(:focus):not(:active),
 input[type='checkbox'].visually-hidden,
 input[type='radio'].visually-hidden {
@@ -75,24 +77,29 @@ input[type='radio'].visually-hidden {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
 .btn {
   display: block;
   cursor: pointer;
   padding: 10px 10px;
 }
+
 .is-hidden {
   display: none;
 }
+
 .container {
   width: 1200px;
   margin: 0 auto;
 }
+
 .main__box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 40px;
 }
+
 .option__title {
   color: #00aeff;
   text-align: center;
@@ -120,28 +127,29 @@ input[type='radio'].visually-hidden {
   bottom: 0;
   background: url('../images/noise.png');
 }
+
 .top__title {
   margin-bottom: 15px;
   text-transform: uppercase;
 }
-.bg-place {
-  background: hsla(0, 0%, 100%, 0.1);
-  margin-bottom: 1px;
-}
+
 .top__title span {
   color: #118dd6;
 }
+
 .player {
   height: 30px;
   line-height: 30px;
   padding-right: 15px;
 }
+
 .players-number {
   position: relative;
   width: 50px;
   padding-left: 15px;
   display: inline-block;
 }
+
 .players-number::before {
   position: absolute;
   content: '';
@@ -152,6 +160,7 @@ input[type='radio'].visually-hidden {
   background-repeat: no-repeat;
   background-position: 50%;
 }
+
 .pn-one {
   border-left: 4px solid gold;
   background-image: -webkit-gradient(
@@ -162,9 +171,11 @@ input[type='radio'].visually-hidden {
     to(rgba(255, 215, 0, 0))
   );
 }
+
 .pn-one:before {
   background-image: url('../images/medal_gold.svg');
 }
+
 .pn-two {
   border-left: 4px solid silver;
   background-image: linear-gradient(
@@ -173,9 +184,11 @@ input[type='radio'].visually-hidden {
     hsla(0, 0%, 64%, 0)
   );
 }
+
 .pn-two::before {
   background-image: url('../images/medal_silver.svg');
 }
+
 .pn-three {
   border-left: 4px solid #8a4b0b;
   background-image: linear-gradient(
@@ -193,9 +206,7 @@ input[type='radio'].visually-hidden {
   width: 270px;
 }
 
-.logo-box {
-  width: 100%;
-  height: 385px;
+.box {
   position: relative;
   padding-top: 40px;
   color: #fff;
@@ -207,7 +218,7 @@ input[type='radio'].visually-hidden {
   z-index: 0;
 }
 
-.logo-box:before {
+.box:before {
   content: '';
   position: absolute;
   left: 0;
@@ -218,19 +229,11 @@ input[type='radio'].visually-hidden {
   z-index: -1;
 }
 
-.logo-box-tablet {
-  display: none;
+.logo-box {
+  width: 100%;
+  height: 385px;
 }
 
-.logo-box-mobile {
-  display: none;
-}
-
-.logo {
-  position: relative;
-  width: 300px;
-  text-align: center;
-}
 .logo-title {
   font-size: 46px;
   font-weight: 700;
@@ -241,6 +244,7 @@ input[type='radio'].visually-hidden {
   transition: all 1s;
   margin-bottom: 20px;
 }
+
 .logo-text {
   font-size: 16px;
   color: #fff;
@@ -248,57 +252,11 @@ input[type='radio'].visually-hidden {
   text-shadow: -1px -1px #000, 0 1px 0 #444;
   line-height: 1.4;
 }
+
 .logo-text-img {
   width: 100%;
   margin: 0 auto;
   filter: drop-shadow(0 12px 10px rgba(255, 255, 255, 1));
-}
-.command-wrap {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  padding-top: 40px;
-  color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
-  z-index: 0;
-}
-
-.command-wrap:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: url('../images/noise.png');
-  z-index: -1;
-}
-
-.command-wrap-tablet {
-  display: none;
-  justify-content: center;
-  position: relative;
-  padding-top: 40px;
-  color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  background: linear-gradient(rgb(32, 52, 75), rgb(27, 38, 58));
-  z-index: 0;
-}
-
-.command-wrap-tablet:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: url('../images/noise.png');
-  z-index: -1;
 }
 
 .registration-wrap {
@@ -323,13 +281,10 @@ input[type='radio'].visually-hidden {
   z-index: -1;
 }
 
-.registration-wrap-tablet {
-  display: none;
-}
-
 .registration__title {
   margin-bottom: 20px;
 }
+
 .registration__user {
   display: block;
   margin-bottom: 20px;
@@ -341,22 +296,26 @@ input[type='radio'].visually-hidden {
   text-shadow: -1px -1px #000, 0 1px 0 #444;
   transition: all 1s;
 }
+
 .sing-in-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .command {
   display: flex;
   align-items: center;
   position: relative;
 }
+
 .icon {
   display: block;
   color: #fff;
   margin-right: 10px;
   font-size: 36px;
 }
+
 .auth-btn {
   text-decoration: none;
   display: inline-block;
@@ -378,6 +337,7 @@ input[type='radio'].visually-hidden {
   box-shadow: 0 16px 32px 0 rgba(0, 40, 120, 0.35);
   transition: 0.5s;
 }
+
 .auth-btn-reg {
   text-decoration: none;
   display: inline-block;
@@ -398,6 +358,7 @@ input[type='radio'].visually-hidden {
   box-shadow: 0 16px 32px 0 rgba(0, 40, 120, 0.35);
   transition: 0.5s;
 }
+
 .auth-btn-up {
   background-image: linear-gradient(
     45deg,
@@ -406,29 +367,35 @@ input[type='radio'].visually-hidden {
     #006078 100%
   );
 }
+
 .auth-btn:hover,
 .auth-btn-reg:hover {
   box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
   background-position: 0 0;
 }
+
 .button-container-logout {
   position: absolute;
   bottom: 4%;
   left: 16%;
   margin: 0;
 }
+
 .command-text {
   color: #00aeff;
   text-align: left;
   font-size: 18px;
   font-weight: 500;
 }
+
 .command-text span {
   display: block;
 }
+
 .corp {
   color: #fff;
 }
+
 .footer .container {
   display: flex;
   flex-direction: column;
