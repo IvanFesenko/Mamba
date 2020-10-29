@@ -2,6 +2,7 @@ import Refs from './refs';
 import { setStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
 import { onCloseModal } from './auth-modal';
+import { hideElement, showElement } from './show-hide';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,12 +25,10 @@ firebase.initializeApp({
 // будет переписана после подключения модальной страницы авторизации
 firebase.auth().onAuthStateChanged(fbUser => {
   if (fbUser) {
-
     hideElement(Refs.registration);
-    showElement(Refs.logoutWrap);      
-  } else {    
-    hideElement(Refs.logoutWrap); 
-
+    showElement(Refs.logoutWrap);
+  } else {
+    hideElement(Refs.logoutWrap);
   }
 });
 
@@ -42,7 +41,7 @@ async function authorization(e) {
       Refs.password.value,
     );
 
-    onCloseModal();    
+    onCloseModal();
     hideElement(Refs.registration);
 
     await getUserStats();
@@ -54,9 +53,8 @@ async function authorization(e) {
 function logOut(e) {
   e.preventDefault();
 
-  firebase.auth().signOut();  
+  firebase.auth().signOut();
   showElement(Refs.registration);
-
 }
 
 async function singUp(e) {
@@ -71,7 +69,7 @@ async function singUp(e) {
         Refs.password.value,
       );
 
-      await addUserToDB(user, userName);      
+      await addUserToDB(user, userName);
       hideElement(Refs.registration);
 
       onCloseModal();
@@ -211,4 +209,3 @@ function getUniStatsList(list) {
 function getSortedTopList(list) {
   return [...list].sort((firstEl, secondEl) => secondEl.score - firstEl.score);
 }
-
