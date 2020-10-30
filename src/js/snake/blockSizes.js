@@ -1,7 +1,18 @@
 import Refs from '../refs';
+const { canvas } = Refs;
 
-export const width = Refs.canvas.width;
-export const height = Refs.canvas.height;
+const getSize = () => {
+  if (document.body.clientWidth < 576) {
+    return 360;
+  } else {
+    return 528;
+  }
+};
+
+canvas.width = getSize();
+canvas.height = getSize();
+export const width = canvas.width;
+export const height = canvas.height;
 
 //=======blocks======
 export const blockSize = 12;
