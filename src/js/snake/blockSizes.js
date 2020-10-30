@@ -3,7 +3,9 @@ const { canvas } = Refs;
 
 const getSize = () => {
   const size = document.body.clientWidth;
-  if (size < 576 && size > 362) {
+  if (size < 1251 && size > 576) {
+    return 480;
+  } else if (size < 576 && size > 362) {
     return 360;
   } else if (size < 362) {
     return 324;
