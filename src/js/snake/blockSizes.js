@@ -2,8 +2,11 @@ import Refs from '../refs';
 const { canvas } = Refs;
 
 const getSize = () => {
-  if (document.body.clientWidth < 576) {
+  const size = document.body.clientWidth;
+  if (size < 576 && size > 362) {
     return 360;
+  } else if (size < 362) {
+    return 324;
   } else {
     return 528;
   }

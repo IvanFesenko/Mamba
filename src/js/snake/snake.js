@@ -57,7 +57,7 @@ const setNewMode = e => {
 };
 
 const drawGameOver = () => {
-  ctx.font = '500 60px Arial';
+  ctx.font = '500 52px Arial';
   ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
