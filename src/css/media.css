@@ -3,10 +3,6 @@
   .container {
     width: 960px;
   }
-
-  .canvas {
-    width: 383px;
-  }
 }
 
 /* 768-992px */
@@ -92,9 +88,6 @@
     display: flex;
     justify-content: center;
   }
-  .canvas {
-    width: 500px;
-  }
 }
 
 /* 320-576px */
@@ -119,9 +112,5 @@
 
   .logo-text {
     font-size: 14px;
-  }
-
-  .canvas {
-    width: 300px;
   }
 }
