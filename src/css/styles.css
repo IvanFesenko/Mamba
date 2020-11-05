@@ -137,6 +137,26 @@ input[type='radio'].visually-hidden {
   color: #118dd6;
 }
 
+.individual-stats {
+  height: 100%;
+  display: none;
+}
+
+.top-description {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  width: 140px;
+}
+.top-description:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.individual-stats-result {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .player {
   height: 30px;
   line-height: 30px;

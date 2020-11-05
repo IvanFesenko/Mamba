@@ -5,6 +5,7 @@ import { getGameMode } from './snake/modes';
 export async function setStatsHTML() {
   const mode = getGameMode();
   const data = await getTopStats(mode);
+
   const statsHTML = data.map((e, i) => {
     if (i === 0) {
       return `<li class="player bg-place"><span class="players-number pn-one">${
@@ -25,4 +26,15 @@ export async function setStatsHTML() {
     }
   });
   refs.topList.innerHTML = statsHTML.join(' ');
+}
+
+export async function setPersonalStatsHTML() {
+  const mode = getGameMode();
+  const userStats = await getUserStats();
+  refs.userStats.innerHTML = '';
+  const markup = `<p class="top-description">Total games: <span class="individual-stats-result">${userStats.total}</span></p>
+  <p class="top-description">Mode games: <span class="individual-stats-result">${userStats[mode].total}</span></p>
+  <p class="top-description">Max score: <span class="individual-stats-result">${userStats[mode].maxScore}</span></p>`;
+
+  refs.userStats.insertAdjacentHTML('beforeend', markup);
 }
