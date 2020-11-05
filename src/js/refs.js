@@ -10,6 +10,8 @@ const Refs = {
   modeWrp: document.querySelector('.mode-wrp'),
   snakeScore: document.querySelector('.snake-score'),
   topList: document.querySelector('.players-list'),
+  userStatsRef: document.querySelector('.individual-stats'),
+  userStats: document.querySelector('.individual-stats-wrapper'),
   game: document.querySelector('.snake-wrp'),
 
   gameWrap: document.querySelector('.main-content-wrap'),

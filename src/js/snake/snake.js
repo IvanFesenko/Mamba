@@ -6,7 +6,7 @@ import { MODE_CLASSIC } from './modes';
 import { TouchStart, TouchMove, TouchEnd } from './touchFunctions';
 import { width, height, blockSize } from './blockSizes';
 import Refs from '../refs';
-import { setStatsHTML } from '../stats';
+import { setStatsHTML, setPersonalStatsHTML } from '../stats';
 import { updateUserStats, userGetTop, userLoggedIn } from '../firebase';
 import '../../css/snake.css';
 
@@ -52,8 +52,12 @@ const setNewMode = e => {
   const mode = e.target.dataset.mode;
   if (mode) {
     localStorage.setItem('mode', mode);
+    setStatsHTML();
+    const userIn = userLoggedIn();
+    if (userIn) {
+      setPersonalStatsHTML();
+    }
   }
-  setStatsHTML();
 };
 
 const drawGameOver = () => {

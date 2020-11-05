@@ -1,5 +1,5 @@
 import Refs from './refs';
-import { setStatsHTML } from './stats';
+import { setStatsHTML, setPersonalStatsHTML } from './stats';
 import { getGameMode } from './snake/modes';
 import { onCloseModal } from './auth-modal';
 import { hideElement, showElement } from './show-hide';
@@ -29,9 +29,12 @@ firebase.auth().onAuthStateChanged(fbUser => {
     getUserName().then(user => (Refs.regUser.textContent = user));
     hideElement(Refs.registration);
     showElement(Refs.logoutWrap);
+    setPersonalStatsHTML();
+    Refs.userStatsRef.style.display = 'block';
   } else {
     hideElement(Refs.logoutWrap);
     Refs.regUser.style.display = 'none';
+    Refs.userStatsRef.style.display = 'none';
   }
 });
 
@@ -165,7 +168,8 @@ export async function updateUserStats(newScore) {
   }
   const db = firebase.database();
   const Stats = db.ref(`/stats/${userID}`);
-  Stats.set(stats);
+  await Stats.set(stats);
+  setPersonalStatsHTML();
 }
 
 async function updateTopStats(newStats, mode) {
